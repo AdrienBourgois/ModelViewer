@@ -1,10 +1,17 @@
 #include <iostream>
-#include "Device.h"
+#include "Parser_OBJ.h"
 
 int main ( int, char*[])
 {
-    auto device = new id::Device;
-    device->create();
+    id::Parser_OBJ parser;
+
+    parser.setPath("chara.obj");
+
+    parser.openFile();
+
+    parser.loadObject();
+
+    parser.closeFile();
 
     return EXIT_SUCCESS;
 }

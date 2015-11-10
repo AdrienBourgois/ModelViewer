@@ -1,12 +1,7 @@
 TARGET = out
 
 SRC = main.cpp \
-	  maths/Matrix.cpp \
-	  Device.cpp \
-	  shader.cpp \
-	  Scene.cpp \
-	  SceneNode.cpp \
-	  Driver.cpp \
+	  Parser_OBJ.cpp \
 
 LIBS = SDL2 GL GLEW
 
