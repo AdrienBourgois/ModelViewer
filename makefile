@@ -11,7 +11,7 @@ SRC = main.cpp \
 	  Mesh.cpp\
 	  CameraSceneNode.cpp\
 	  MeshSceneNode.cpp
-
+	  Parser_OBJ.cpp \
 
 LIBS = SDL2 GL GLEW
 
