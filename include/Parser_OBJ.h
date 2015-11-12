@@ -10,6 +10,41 @@
 
 namespace id
 {
+    struct Vertex
+    {
+        std::vector<GLfloat> vertex_point1; 
+        std::vector<GLfloat> vertex_point2; 
+        std::vector<GLfloat> vertex_point3; 
+    };
+
+    struct Tex
+    {
+        std::vector<GLfloat> tex_point1; 
+        std::vector<GLfloat> tex_point2; 
+    };
+
+    struct Normal
+    {
+        std::vector<GLfloat> normal_point1; 
+        std::vector<GLfloat> normal_point2; 
+        std::vector<GLfloat> normal_point3; 
+    };
+
+    struct Face
+    {
+        std::vector<GLfloat> vertex1; 
+        std::vector<GLfloat> vertex2; 
+        std::vector<GLfloat> vertex3; 
+
+        std::vector<GLfloat> tex1; 
+        std::vector<GLfloat> tex2; 
+        std::vector<GLfloat> tex3; 
+
+        std::vector<GLfloat> normal1; 
+        std::vector<GLfloat> normal2; 
+        std::vector<GLfloat> normal3; 
+    };
+
     struct Parser_OBJ
     {
     public:
@@ -22,7 +57,11 @@ namespace id
         void loadObject();
 
         void parseVertex(std::string);
+        void parseTex(std::string);
+        void parseNormal(std::string line);
         void parseFace(std::string);
+
+        void displayData();
 
         char* strtochar(std::string, int = 0);
 
@@ -35,19 +74,16 @@ namespace id
 
         std::string obj_path;
 
-        std::vector<GLfloat> vertex_point1; 
-        std::vector<GLfloat> vertex_point2; 
-        std::vector<GLfloat> vertex_point3; 
-
-        std::vector<GLfloat> tex_point1; 
-        std::vector<GLfloat> tex_point2; 
+        Vertex vertex;
+        Tex tex;
+        Normal normal;
+        Face face;
 
         std::vector<GLfloat> normal_point1; 
         std::vector<GLfloat> normal_point2; 
         std::vector<GLfloat> normal_point3; 
 
     };
-
 }
 
 #endif
