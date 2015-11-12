@@ -5,19 +5,67 @@
 #include <string>
 
 #include "Device.h"
-#include "shader.h"
+#include "Shader.h"
 #include "SceneNode.h"
 #include "Scene.h"
 
 namespace id {
 
-    void Device::create()
+    std::unique_ptr<Device> Device::create()
     {
-        //this->initSubSystem(SubSystems::Timer);
+        Device * dev = new (std::nothrow) Device;
+        SDL_assert(dev);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"device created");
+        dev->window = Window::create();
+        SDL_assert(dev->getWindow());
+        SDL_assert(dev->getWindow()->getWindow());
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"window created");
+        dev->driver = Driver::create(*dev);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"driver created");
+        dev->scene = Scene::create(*dev->getDriver());
+        SDL_assert(dev->getScene());
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"Scene created");
+        dev->initGlew();
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"Glew created");
+        dev->getDriver()->addShader("simple");
 
-        //this->createWindow();
-        //this->createVideoDriver();
+        //this->prg_id = shader::makeAndUseProgram("simple");
 
+        glClearColor(0.f, 0.f, 0.f, 1.f);
+        
+        //this->setInitUniform(this->prg_id);
+
+        while(dev->shouldRun())
+        {
+            dev->run();
+        }
+
+       /* glDisableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glUseProgram(0);
+        glDeleteProgram(this->prg_id);
+*/
+        return std::unique_ptr<Device>(dev);
+    }
+
+    Device::Device()
+    {
+        SDL_Init(SDL_INIT_EVERYTHING);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"SDL initialised");
+        setAttribute();
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"Attribut set");
+        this->driver = nullptr;
+        this->window = nullptr;
+        this->scene = nullptr;
+    }
+
+    Device::~Device()
+    {
+        SDL_Quit();
+    }
+
+    void Device::setAttribute()
+    {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -26,27 +74,16 @@ namespace id {
         SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
         glEnable(GL_DEPTH_TEST);
-
-        driver.create();
-
-        this->prg_id = shader::makeAndUseProgram("simple");
-
-        glClearColor(0.f, 0.f, 0.f, 1.f);
-
-        this->setInitUniform(this->prg_id);
-
-        while(this->shouldRun())
-        {
-            this->run();
-        }
-
-        glDisableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glUseProgram(0);
-        glDeleteProgram(this->prg_id);
     }
 
-    void Device::setInitUniform(auto prg_id)
+    void Device::initGlew()
+    {
+        glewExperimental = GL_TRUE;
+        auto status = glewInit();
+        SDL_assert(status == GLEW_OK);
+    }
+
+  /*  void Device::setInitUniform(auto prg_id)
     {
         auto world_loc = glGetUniformLocation(prg_id, "world");
         auto view_loc = glGetUniformLocation(prg_id, "view");
@@ -61,16 +98,8 @@ namespace id {
         glUniformMatrix4fv(view_loc, 1, GL_TRUE, view.val);
         glUniformMatrix4fv(proj_loc, 1, GL_TRUE, proj.val);
     }
+ */  
 
-    Device::~Device()
-    {
-        SDL_Quit();
-    }
-
-    Device::Device()
-    {
-        SDL_Init(SDL_INIT_EVERYTHING);
-    }
 
     bool Device::shouldRun()
     {
@@ -91,11 +120,7 @@ namespace id {
 
     void Device::run()
     {
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        driver.draw();
-
-        SDL_GL_SwapWindow(driver.getWindow());
+        this->driver->draw(*this);
     }
 
 }

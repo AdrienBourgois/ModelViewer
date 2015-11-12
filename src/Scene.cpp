@@ -1,11 +1,18 @@
 #include "Scene.h"
 #include <iostream>
-#include "SceneNode.h"
-
+#include "Driver.h"
 namespace id
 {
-    void Scene::create()
+    std::unique_ptr<Scene> Scene::create(Driver & driver)
     {
+        Scene * scene = new (std::nothrow) Scene(driver);
+        SceneNode * root = new SceneNode(*scene, nullptr);
+        SDL_assert(root);
+        scene->setRoot(*root);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"root set");
+        SDL_assert(scene);
+        return std::unique_ptr<Scene>(scene);
+        /*
         std::vector<GLfloat> cube =
         {
             0.5f, -0.5f,  0.5f,    1.000f, 0.000f, 0.000f, 1.0f,
@@ -41,10 +48,48 @@ namespace id
             0.5f,  0.5f, -0.5f,    1.000f, 0.000f, 0.000f, 1.0f,
         };
 
-        this->newSceneNode(cube);
+        this->newSceneNode(cube);*/
 
     }
+    
+    Scene::Scene(Driver & driver)
+    {
+        this->driver = & driver;
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating camera...");
+        this->camera.push_back(new CameraSceneNode(*this));
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"camera created");
+        this->camera[0]->setProj(maths::Matrix4::perspective(90.f,1.f,0.1f,100.f));
+        SDL_assert(this->camera[0]);
+        this->root = nullptr;
+    }
 
+    void Scene::setRoot(SceneNode & root)
+    {
+        if(this->root == nullptr)
+        {
+            this->root = &root;
+        }
+        else
+            SDL_LogInfo(SDL_LOG_CATEGORY_ERROR,0,"root already set");
+    }
+
+    void Scene::locCamera()
+    {
+        GLint view_loc = driver->getShader("simple")->locate("view");
+        SDL_assert(view_loc >= 0);
+        GLint proj_loc = driver->getShader("simple")->locate("proj");
+        SDL_assert(proj_loc >= 0);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"loc done");
+        glUniformMatrix4fv(view_loc,1,GL_TRUE,camera[0]->getGlobalTransform().inverse().val);
+        glUniformMatrix4fv(proj_loc,1,GL_TRUE,camera[0]->getProj().inverse().val);
+
+    }
+    void Scene::drawAll()
+    {
+        this->root->drawNode(*this->driver);
+        this->locCamera();
+    }
+    /*
     void Scene::newSceneNode(std::vector<GLfloat> data)
     {
         SceneNode* node = new SceneNode;
@@ -96,6 +141,6 @@ namespace id
 
         glUniformMatrix4fv(world_loc, 1, GL_TRUE, matrix.val);
     }
+*/
 
-
-}
+}//id

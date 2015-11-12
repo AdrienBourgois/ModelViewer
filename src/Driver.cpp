@@ -1,38 +1,64 @@
 #include "Driver.h"
 #include <iostream>
 
+#include "Device.h"
 namespace id
 {
-    void Driver::create()
+    Driver::Driver(SDL_Window * window)
     {
-        this->window = SDL_CreateWindow("Opengl 4.2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 400, 400, SDL_WINDOW_OPENGL);
-        SDL_assert(this->window);
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating contex...");
+        this->context = createContext(window);
+        this->shaders = std::map<std::string,Shader*>();
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"contxt created");
+    }
 
-        context = SDL_GL_CreateContext(window);
-        SDL_assert(this->context);
-
-        glewExperimental = GL_TRUE;
-        auto status = glewInit();
-        if (status != GLEW_OK)
-            fprintf(stderr, "Error: %s\n", glewGetErrorString(status));
-        SDL_assert(status == GLEW_OK);
-
-        scene.create();
+    std::unique_ptr<Driver> Driver::create(Device & device)
+    {
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating Driver...");
+        Driver* drv = new (std::nothrow) Driver (device.getWindow()->getWindow());
+        SDL_assert(drv);
+        return std::unique_ptr<Driver>(drv);
     }
 
     Driver::~Driver()
     {
         SDL_GL_DeleteContext(getContext());
-        SDL_DestroyWindow(window);
     }
 
-    Driver::Driver(SDL_Window* window)
+    SDL_GLContext Driver::createContext(SDL_Window* window)
     {
-        this->window = window;
+        SDL_GLContext gl_context = SDL_GL_CreateContext(window);
+        SDL_assert(gl_context);
+        return gl_context;
     }
 
-    void Driver::draw()
+    void Driver::addShader(std::string const& name)
     {
-        scene.draw();
+        if(shaders.find(name)==shaders.end())
+        {
+            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating new shader");
+            shaders[name] = new Shader(name);
+        }
+        else
+            SDL_LogInfo(SDL_LOG_CATEGORY_ERROR,"Shader already created");
+    }
+
+    void Driver::draw(Device & device)
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+        device.getScene()->drawAll();
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"drawAll done");
+        SDL_GL_SwapWindow(device.getWindow()->getWindow());
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"window swaped");
+    }
+
+    void Driver::setWorld(maths::Matrix4 const& world)
+    {
+        GLuint world_loc = getShader("simple")->locate("world");
+        glUniformMatrix4fv(world_loc,1,GL_TRUE, world.val);
+    }
+    void Driver::drawMesh(Mesh & mesh)
+    {
+        glDrawArrays(GL_TRIANGLES,0,mesh.getNbVertex());
     }
 }

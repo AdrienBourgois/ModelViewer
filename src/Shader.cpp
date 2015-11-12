@@ -1,38 +1,47 @@
-#include "shader.h"
+#include "Shader.h"
 
-namespace shader {
+namespace id {
 
-    GLuint loadShader(std::string const& name, GLint shader_type)
+Shader::Shader(std::string const& name)
+{
+    vs_id = loadShader(name,GL_VERTEX_SHADER);
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"vs_id");
+    fs_id = loadShader(name,GL_FRAGMENT_SHADER);
+    prg_id = loadProgram();
+}
+
+GLint Shader::loadShader(std::string const& name, GLint shader_type)
     {
-        std::string filename = "assets/shader/";
-        filename += name;
+        std::string path;
         if (shader_type == GL_VERTEX_SHADER)
-            filename += "_vs.glsl";
+            path = "./assets/shader/" + name + "_vs.glsl";
         if (shader_type == GL_FRAGMENT_SHADER)
-            filename += "_fs.glsl";
-
+            path = "./assets/shader/" + name + "_fs.glsl";
         std::string source_code;
-
         std::ifstream file;
-        file.open(filename, std::ios::binary);
+        file.open(path, std::ios::binary);
         SDL_assert(file.is_open());
 
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"file open");
         file.seekg (0, std::ios::end);
         auto file_len = file.tellg();
         file.seekg(0, std::ios::beg);
-
         source_code.resize(file_len);
         file.read(&source_code[0], file_len);
         file.close();
 
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"file close");
         auto vs_id = glCreateShader(shader_type);
 
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"shader create");
         char const* c_source = source_code.c_str();
         int const source_len = source_code.size();
-        glShaderSource(vs_id, 1, &c_source, &source_len);
 
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"var insantiate");
+        glShaderSource(vs_id, 1, &c_source, &source_len);
         glCompileShader(vs_id);
 
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"shader compil");
         GLint status;
         glGetShaderiv(vs_id, GL_COMPILE_STATUS, &status);
         if (status == GL_FALSE)
@@ -42,16 +51,16 @@ namespace shader {
 
             auto infolog = new char[len];
             glGetShaderInfoLog(vs_id, len, &len, infolog);
-            std::cerr << "shader [" << filename << "] compile error : " << infolog << std::endl;
+            std::cerr << "shader [" << path << "] compile error : " << infolog << std::endl;
             SDL_assert(false);
         }
         else
-            std::cout << "Shader [" << filename << "] compilation success" << std::endl;
+            std::cout << "Shader [" << path << "] compilation success" << std::endl;
 
         return vs_id;
     }
 
-    GLuint loadProgram(GLuint vs_id, GLuint fs_id)
+GLint Shader::loadProgram()
     {
         auto prg_id = glCreateProgram();
 
@@ -84,14 +93,22 @@ namespace shader {
         return prg_id;
     }
 
-    GLuint makeAndUseProgram(std::string const& name)
+    GLint Shader::locate(std::string const& name)
     {
-        auto vs_id = shader::loadShader(name, GL_VERTEX_SHADER);
-        auto fs_id = shader::loadShader(name, GL_FRAGMENT_SHADER);
-        auto prg_id = shader::loadProgram(vs_id, fs_id);
+        GLint loc = glGetUniformLocation(prg_id,name.c_str());
+        SDL_assert(loc >= 0);
+        return loc;
+    }
+
+
+    /*GLint makeAndUseProgram(std::string const& name)
+    {
+        auto vs_id = loadShader(name, GL_VERTEX_SHADER);
+        auto fs_id = loadShader(name, GL_FRAGMENT_SHADER);
+        auto prg_id = loadProgram();
 
         glUseProgram(prg_id);
 
         return prg_id;
-    }
+    }*/
 }

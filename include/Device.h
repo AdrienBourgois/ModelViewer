@@ -2,46 +2,45 @@
 #define __DEVICE_H_INCLUDE__
 
 #include <memory>
+#include <GL/glew.h>
 #include <SDL.h>
-#include <vector>
 #include "maths/Matrix.h"
 #include "Driver.h"
-
+#include "Scene.h"
+#include "Window.h"
 namespace id
 {
-    class Window
-    {
-        
-    };
-
     class Device
     {
     public:
+        Device(Device const&)=delete;
+        Device(Device &&)=delete;
         ~Device();
-        Device();
 
-        Device(Device const&) = delete;
-        Device(Device&&) = delete;
         Device&  operator=(Device const&) = delete;
         Device&  operator=(Device&&) = delete;
 
-        void create();
+        static std::unique_ptr<Device>    create();
+               Driver*                    getDriver() {return driver.get();}
+               Window*                    getWindow() {return window.get();}
+               Scene*                     getScene() {return scene.get();}
+               void                       initGlew();
+               void                       setAttribute();
 
-        bool shouldRun();
-        void run();
-        void setInitUniform(auto);
+               bool                       shouldRun();
+               void                       run();
+               //void setInitUniform(auto);
 
-        SDL_Event getEvent() {return this->event;}
+        //     EventManager*  getEventManager() {returd this->event_manager;}
 
     private:
-        SDL_Event event;
 
-        Driver driver;
-
-        GLuint prg_id;
+        Device();
+        //std::unique_ptr<EventManager> event_manager;
         
-        //std::unique_ptr<Window>          Window;
-        //std::unique_ptr<VideoDriver>     VideoDriver;
+        std::unique_ptr<Driver> driver;
+        std::unique_ptr<Window> window;
+        std::unique_ptr<Scene> scene;
     };
 }
 

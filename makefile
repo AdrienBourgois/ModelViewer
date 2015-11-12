@@ -3,10 +3,15 @@ TARGET = out
 SRC = main.cpp \
 	  maths/Matrix.cpp \
 	  Device.cpp \
-	  shader.cpp \
+	  Shader.cpp \
 	  Scene.cpp \
 	  SceneNode.cpp \
 	  Driver.cpp \
+	  Window.cpp\
+	  Mesh.cpp\
+	  CameraSceneNode.cpp\
+	  MeshSceneNode.cpp
+
 
 LIBS = SDL2 GL GLEW
 

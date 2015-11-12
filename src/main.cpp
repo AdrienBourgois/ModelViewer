@@ -3,8 +3,7 @@
 
 int main ( int, char*[])
 {
-    auto device = new id::Device;
-    device->create();
+    id::Device::create();
 
     return EXIT_SUCCESS;
 }

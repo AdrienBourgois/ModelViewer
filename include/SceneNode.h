@@ -8,12 +8,34 @@
 
 namespace id
 {
-struct SceneNode
-{
-public:
-    SceneNode() = default;
-    ~SceneNode() = default;
+    class Scene;
+    class Driver;
+    class SceneNode
+    {
+    public:
 
+        SceneNode(Scene &, SceneNode *);
+        virtual ~SceneNode();
+
+
+        virtual                                Scene* getScene()            {return scene;}
+        virtual maths::Matrix4 const&          getLocalTranforme()          {return transform;}
+        virtual maths::Matrix4                 getGlobalTransform();
+        virtual bool                           getVisibility()                {return is_visible;}
+        virtual SceneNode*                     getParent()                  {return parent;}
+        virtual void                           addChild(SceneNode & child);
+        virtual std::vector<SceneNode*> const& getChildren()                {return children;}
+        virtual void                           setTransform(maths::Matrix4 const& transform);
+        virtual void                           drawNode(Driver & driver);
+
+    private:
+        maths::Matrix4 transform;
+        Scene* scene;
+        bool is_visible;
+        std::vector<SceneNode*> children;
+        SceneNode* parent;
+
+    /*
     void setVertexArray(GLuint vao) {this->vao = vao;}
     void setBuffer(GLuint vbo) {this->vbo = vbo;}
     void setData(std::vector<GLfloat>) {this->data = data;}
@@ -33,9 +55,8 @@ public:
 private:
     std::vector<GLfloat> data;
     maths::Matrix4 matrix = maths::Matrix4::identity;
-    int size = 0;
-};
-
-}
+    int size = 0;*/
+    };
+}//id
 
 #endif
