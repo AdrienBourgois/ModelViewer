@@ -6,7 +6,6 @@
 #include <GL/glew.h>
 #include <iostream>
 #include <string>
-#include <cstring>
 
 namespace id
 {
@@ -45,7 +44,7 @@ namespace id
         std::vector<GLfloat> normal3; 
     };
 
-    struct Parser_OBJ
+    class Parser_OBJ
     {
     public:
         Parser_OBJ() = default;
@@ -56,14 +55,15 @@ namespace id
         void closeFile();
         void loadObject();
 
+        std::vector<std::string> explodeLine(std::string);
+        std::string slashToSpace(std::string);
+
         void parseVertex(std::string);
         void parseTex(std::string);
         void parseNormal(std::string line);
         void parseFace(std::string);
 
         void displayData();
-
-        char* strtochar(std::string, int = 0);
 
         //set
         void setPath(std::string path) {obj_path = path;}
@@ -82,7 +82,6 @@ namespace id
         std::vector<GLfloat> normal_point1; 
         std::vector<GLfloat> normal_point2; 
         std::vector<GLfloat> normal_point3; 
-
     };
 }
 

@@ -20,16 +20,17 @@ void Parser_OBJ::closeFile()
 
 void Parser_OBJ::loadObject()
 {
+    openFile();
+
     std::string cur_line;
 
     std::cout << "Start read file !" << std::endl;
 
-    while(!stream.eof())
+    while(!stream.eof() && stream.good())
     {
         std::getline(stream, cur_line);
         if (stream.eof() || !stream.good())
             break;
-        //std::cout << cur_line << std::endl;
 
         else if(cur_line[0] == 'v')
         {
@@ -37,112 +38,111 @@ void Parser_OBJ::loadObject()
                 parseVertex(cur_line);
             else if(cur_line[1] == 't')
                 parseTex(cur_line);
+            else if(cur_line[1] == 'n')
+                parseNormal(cur_line);
         }
         else if(cur_line[0] == 'f')
             parseFace(cur_line);
     }
 
-    std::cout << "End read file !" << std::endl;
+    std::cout << "File " << obj_path << " loaded !" << std::endl;
+
+    closeFile();
 }
 
 void Parser_OBJ::parseVertex(std::string line)
 {
-    char* char_line = nullptr;
-    char* parsed = nullptr;
+    std::string sub_line = line.substr(2);
 
-    char_line = strtochar(line, 2);
-    parsed = strtok(char_line, " ");
-    vertex.vertex_point1.push_back(strtof(parsed, nullptr));
+    std::vector<std::string> elements = explodeLine(sub_line);
 
-    parsed = strtok(nullptr, " ");
-    vertex.vertex_point2.push_back(strtof(parsed, nullptr));
-
-    parsed = strtok(nullptr, " ");
-    vertex.vertex_point3.push_back(strtof(parsed, nullptr));
+    vertex.vertex_point1.push_back(stod(elements[0]));
+    vertex.vertex_point2.push_back(stod(elements[1]));
+    vertex.vertex_point3.push_back(stod(elements[2]));
 }
 
 void Parser_OBJ::parseTex(std::string line)
 {
-    char* char_line = nullptr;
-    char* parsed = nullptr;
+    std::string sub_line = line.substr(3);
 
-    char_line = strtochar(line, 3);
-    parsed = strtok(char_line, " ");
-    tex.tex_point1.push_back(strtof(parsed, nullptr));
+    std::vector<std::string> elements = explodeLine(sub_line);
 
-    parsed = strtok(nullptr, " ");
-    tex.tex_point2.push_back(strtof(parsed, nullptr));
+    tex.tex_point1.push_back(stod(elements[0]));
+    tex.tex_point2.push_back(stod(elements[1]));
 }
 
 void Parser_OBJ::parseNormal(std::string line)
 {
-    char* char_line = nullptr;
-    char* parsed = nullptr;
+    std::string sub_line = line.substr(3);
 
-    char_line = strtochar(line, 2);
-    parsed = strtok(char_line, " ");
-    normal.normal_point1.push_back(strtof(parsed, nullptr));
+    std::vector<std::string> elements = explodeLine(sub_line);
 
-    parsed = strtok(nullptr, " ");
-    normal.normal_point2.push_back(strtof(parsed, nullptr));
-
-    parsed = strtok(nullptr, " ");
-    normal.normal_point3.push_back(strtof(parsed, nullptr));
+    normal.normal_point1.push_back(stod(elements[0]));
+    normal.normal_point2.push_back(stod(elements[1]));
+    normal.normal_point3.push_back(stod(elements[2]));
 }
 
 void Parser_OBJ::parseFace(std::string line)
 {
-    char* char_line = nullptr;
-    char* parsed = nullptr;
+    line = slashToSpace(line);
 
-    char_line = strtochar(line, 2);
+    std::string sub_line = line.substr(2);
 
-    char* strPoint1 = strtok(char_line, " ");
-    char* strPoint2 = strtok(NULL, " ");
-    char* strPoint3 = strtok(NULL, " ");
+    std::vector<std::string> elements = explodeLine(sub_line);
 
-    (void)strPoint3;
+    face.vertex1.push_back(stod(elements[0]));
+    face.tex1.push_back(stod(elements[1]));
+    face.normal1.push_back(stod(elements[2]));
 
-    parsed = strtok(strPoint1, "/");
-    face.vertex1.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.tex1.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.normal1.push_back(strtof(parsed, nullptr));
+    face.vertex2.push_back(stod(elements[3]));
+    face.tex2.push_back(stod(elements[4]));
+    face.normal2.push_back(stod(elements[5]));
 
-    parsed = strtok(strPoint2, "/");
-    face.vertex2.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.tex2.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.normal2.push_back(strtof(parsed, nullptr));
-
-    parsed = strtok(strPoint3, "/");
-    face.vertex3.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.tex3.push_back(strtof(parsed, nullptr));
-    parsed = strtok(nullptr, "/");
-    face.normal3.push_back(strtof(parsed, nullptr));
-
-    displayData();
+    face.vertex3.push_back(stod(elements[6]));
+    face.tex3.push_back(stod(elements[7]));
+    face.normal3.push_back(stod(elements[8]));
 }
 
-char* Parser_OBJ::strtochar(std::string string, int start)
+std::vector<std::string> Parser_OBJ::explodeLine(std::string line)
 {
-    char* array = new char[string.size() + 3 - start]();
+    std::vector<std::string> elements;
 
-    for (unsigned int i = 0; i <= string.size(); ++i)
+    std::string cur_element;
+
+    for(unsigned int i = 0; i < line.size(); ++i)
     {
-        array[i] = string[i + start];
-    }
+        if ((line[i] >= '0' && line[i] <= '9') || line[i] == '.' || line[i] == '-')
+            cur_element += line[i];
 
-    return array;
+        else if (line[i] == ' ')
+        {
+            elements.push_back(cur_element);
+            cur_element.erase();
+        }
+    }
+    
+    elements.push_back(cur_element);
+
+    return elements;
+}
+
+std::string Parser_OBJ::slashToSpace(std::string line)
+{
+    for (unsigned int i = 0; i < line.size(); ++i)
+        if (line[i] == '/')
+            line[i] = ' ';
+
+    return line;
 }
 
 void Parser_OBJ::displayData()
 {
     for(unsigned int i = 0; i < vertex.vertex_point1.size(); ++i)
-        std::cout << vertex.vertex_point1[i] << " / " << vertex.vertex_point2[i] << " / " << vertex.vertex_point3[i] << std::endl;
+        std::cout << "v : " << vertex.vertex_point1[i] << " / " << vertex.vertex_point2[i] << " / " << vertex.vertex_point3[i] << std::endl;
+    for(unsigned int i = 0; i < tex.tex_point1.size(); ++i)
+        std::cout << "vt : " << tex.tex_point1[i] << " / " << tex.tex_point2[i] << std::endl;
+    for(unsigned int i = 0; i < normal.normal_point1.size(); ++i)
+        std::cout << "vn : " << normal.normal_point1[i] << " / " << normal.normal_point2[i] << " / " << normal.normal_point3[i] << std::endl;
 }
 
 } //namespace id
