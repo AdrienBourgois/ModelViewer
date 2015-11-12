@@ -143,6 +143,12 @@ void Parser_OBJ::displayData()
         std::cout << "vt : " << tex.tex_point1[i] << " / " << tex.tex_point2[i] << std::endl;
     for(unsigned int i = 0; i < normal.normal_point1.size(); ++i)
         std::cout << "vn : " << normal.normal_point1[i] << " / " << normal.normal_point2[i] << " / " << normal.normal_point3[i] << std::endl;
+    for(unsigned int i = 0; i < face.vertex1.size(); ++i)
+    {
+        std::cout << "f1 : " << face.vertex1[i] << " / " << face.tex1[i] << " / " << face.normal1[i] << std::endl;
+        std::cout << "f2 : " << face.vertex2[i] << " / " << face.tex2[i] << " / " << face.normal2[i] << std::endl;
+        std::cout << "f3 : " << face.vertex3[i] << " / " << face.tex3[i] << " / " << face.normal3[i] << std::endl;
+    }
 }
 
 } //namespace id

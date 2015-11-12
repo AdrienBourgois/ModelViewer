@@ -78,10 +78,6 @@ namespace id
         Tex tex;
         Normal normal;
         Face face;
-
-        std::vector<GLfloat> normal_point1; 
-        std::vector<GLfloat> normal_point2; 
-        std::vector<GLfloat> normal_point3; 
     };
 }
 
