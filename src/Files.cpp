@@ -35,6 +35,8 @@ void FileManager::displayFolder()
 {
     struct dirent **namelist;
     int count;
+    int type = 0;
+    (void)type;
 
     count = scandir(getPath().c_str(), &namelist, NULL, alphasort);
     if (count < 0)
@@ -49,7 +51,15 @@ void FileManager::displayFolder()
 
     for(int i = 0; i < count; ++i)
     {
-        std::cout << '[' << namelist[i]->d_name << "] " << namelist[i]->d_type << std::endl;
+        type = namelist[i]->d_type;
+        if (type == 4)
+            std::cout << '[' << namelist[i]->d_name << "] " << std::endl;
+    }
+    for(int i = 0; i < count; ++i)
+    {
+        type = namelist[i]->d_type;
+        if (type == 8)
+            std::cout << "  " << namelist[i]->d_name << std::endl;
     }
 
     std::cout << std::endl
