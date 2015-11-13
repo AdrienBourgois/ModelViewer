@@ -33,33 +33,27 @@ void FileManager::setPath(std::string path)
 
 void FileManager::displayFolder()
 {
-    DIR* rep = opendir(getPath().c_str());
-    struct dirent* file = nullptr;
+    struct dirent **namelist;
+    int count;
 
-    if (rep == nullptr)
+    count = scandir(getPath().c_str(), &namelist, NULL, alphasort);
+    if (count < 0)
     {
         std::cout << "Can't open " << getPath() << " folder !" << std::endl;
-        return;
+        perror("scandir");
     }
-
-    rewinddir(rep);
 
     std::cout << std::endl
               << "------------------------------- " << getPath() << " -------------------------------" << std::endl;
 
 
-    while((file = readdir(rep)) != nullptr)
+    for(int i = 0; i < count; ++i)
     {
-        if(file->d_name[0] != '.')
-            std::cout << '[' << file->d_name << "]" << std::endl;
+        std::cout << '[' << namelist[i]->d_name << "] " << namelist[i]->d_type << std::endl;
     }
 
     std::cout << std::endl
               << "/------------------------------- " << getPath() << " -------------------------------/" << std::endl;
-
-
-    closedir(rep);
-
 }
 
 std::vector<std::string> FileManager::explodePath(std::string path)
