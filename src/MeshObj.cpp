@@ -142,7 +142,7 @@ namespace id
 	void MeshObj::draw_model()
 	{	
 		glBindTexture(GL_TEXTURE_2D,this->texture);
- 		glDrawArrays(GL_TRIANGLES, 0,this->n_data);	
+ 		glDrawArrays(GL_TRIANGLES, 0,this->n_data);
 	}
 	void MeshObj::create()
 	{
@@ -157,6 +157,10 @@ namespace id
 		glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
 		glClearColor(0.f,0.f,0.f,1.f);
+
+		std::cout << "Nombre de sommets: "<< this->n_data << std::endl;
+
+                std::cout << "Nombre de triangles: "<< this->n_data/3 << std::endl;
 	}
 	void MeshObj::initTexture()
 	{

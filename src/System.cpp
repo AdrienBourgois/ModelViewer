@@ -53,7 +53,6 @@ namespace id
 			SDL_GL_SwapWindow(this->win->getWindow());
         	}
 		glDisableVertexAttribArray(0);
-        	glDisableVertexAttribArray(1);
         	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	        glUseProgram(0);
        		glDeleteProgram(this->shader->getPrg());
