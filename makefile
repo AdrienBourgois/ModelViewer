@@ -10,8 +10,8 @@ SRC = main.cpp \
 	  Window.cpp\
 	  Mesh.cpp\
 	  CameraSceneNode.cpp\
-	  MeshSceneNode.cpp
-	  Parser_OBJ.cpp \
+	  MeshSceneNode.cpp\
+
 
 LIBS = SDL2 GL GLEW
 
