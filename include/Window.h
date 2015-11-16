@@ -4,6 +4,7 @@
 #include <memory>
 #include <GL/glew.h>
 #include <SDL.h>
+#include "Log.h"
 
 namespace id
 {
@@ -15,6 +16,7 @@ namespace id
 		SDL_Window* getWindow() {return this->window;}
 		void init(); 
 	  private:
+		Log* log;
 		SDL_Window* window;
 	};
 }

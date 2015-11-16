@@ -6,6 +6,7 @@ namespace id
 {
 	Shader::Shader()
 	{
+		this->log->write_log("Loading shader", "LOG.txt");
 	}
 	Shader::~Shader()
 	{
@@ -91,5 +92,6 @@ namespace id
 		this->vs_id = loadShader("simple", GL_VERTEX_SHADER);
         	this->fs_id = loadShader("simple", GL_FRAGMENT_SHADER);
 	        this->loadProgram();
+		this->log->write_log("Shader loaded", "LOG.txt");
 	}
 }

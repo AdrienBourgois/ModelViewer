@@ -7,6 +7,7 @@
 #include "Window.h"
 #include "MeshObj.h"
 #include "Shader.h"
+#include "Log.h"
 
 namespace id
 {
@@ -30,6 +31,7 @@ namespace id
 	Window* win;
 	MeshObj* mesh;
 	Shader* shader;
+	Log* log;
 
 	maths::Matrix4 view;
 	maths::Matrix4 world;

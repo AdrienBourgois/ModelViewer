@@ -15,6 +15,7 @@ SRC = main.cpp \
 	Driver.cpp\
 	Parser_JSON.cpp\
 	Parseur.cpp\
+	Log.cpp\
 
 LIBS = SDL2 SDL2_image GL GLEW GLU  
 

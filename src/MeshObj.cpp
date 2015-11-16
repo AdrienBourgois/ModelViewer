@@ -6,7 +6,9 @@ namespace id
 {
 	MeshObj::MeshObj(std::string s, MeshObj *first)
 	{
+		this->log->write_log("Creating meshobj", "LOG.txt");
 		charger_obj(s,first);
+		this->log->write_log("Meshobj created", "LOG.txt");
 	}
 	MeshObj::~MeshObj()
 	{

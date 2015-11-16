@@ -10,6 +10,7 @@
 #include "Material.h"
 #include "Parseur.h"
 #include <fstream>
+#include "Log.h"
 
 namespace id
 {
@@ -27,6 +28,8 @@ namespace id
 		void initTexture();
 
 	  private:
+		Log* log;
+
 		GLuint vbo;
                 GLuint vao;
 

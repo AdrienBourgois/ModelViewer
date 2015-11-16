@@ -7,7 +7,9 @@ namespace id
 {
 	Driver::Driver(Window& window)
 	{
+		this->log->write_log("Creating driver", "LOG.txt");
 		this->window = &window;
+		this->log->write_log("Driver created", "LOG.txt");
 	}
 
 	Driver::~Driver()

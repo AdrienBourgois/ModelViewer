@@ -1,0 +1,32 @@
+Mon Nov 16 16:26:55 2015
+ Device creating
+Mon Nov 16 16:27:37 2015
+ Device creating
+Mon Nov 16 16:38:34 2015
+ Creating device
+Mon Nov 16 16:38:34 2015
+ Device created
+Mon Nov 16 16:38:34 2015
+ Creating driver
+Mon Nov 16 16:38:34 2015
+ Driver created
+Mon Nov 16 16:46:05 2015
+ Creating device
+Mon Nov 16 16:46:05 2015
+ Device created
+Mon Nov 16 16:46:05 2015
+ Creating window
+Mon Nov 16 16:46:05 2015
+ Window created
+Mon Nov 16 16:46:05 2015
+ Creating driver
+Mon Nov 16 16:46:05 2015
+ Driver created
+Mon Nov 16 16:46:05 2015
+ Loading shader
+Mon Nov 16 16:46:05 2015
+ Creating meshobj
+Mon Nov 16 16:46:05 2015
+ Meshobj created
+Mon Nov 16 16:46:05 2015
+ Shader loaded

@@ -6,6 +6,7 @@
 #include "Device.h"
 #include "Window.h"
 #include "Shader.h"
+#include "Log.h"
 #include "maths/tools.h"
 #include "maths/Matrix.h"
 
@@ -25,6 +26,7 @@ namespace id
 	  private:
 		Shader* shader;
 		Window* window;
+		Log* log;
 		SDL_GLContext glcontext;
 
 		GLint world_loc;

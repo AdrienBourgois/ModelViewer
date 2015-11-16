@@ -8,7 +8,9 @@ namespace id
 {
 	Window::Window()
 	{
+		this->log->write_log("Creating window", "LOG.txt");
 		this->init();
+		this->log->write_log("Window created", "LOG.txt");
 	}
 	Window::~Window()
 	{

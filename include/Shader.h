@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include "Log.h"
 
 namespace id
 {	
@@ -22,6 +23,8 @@ namespace id
 		void load_model();
 
 	  private:
+		Log* log;	
+
 		GLuint prg_id;
         	GLint vs_id;
 	        GLint fs_id;
