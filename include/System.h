@@ -15,7 +15,7 @@ namespace id
 	class System
 	{
 	  public:
-		System();
+		System(std::string const& path);
 		~System();
 
 		void init();

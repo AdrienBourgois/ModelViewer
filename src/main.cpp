@@ -1,9 +1,11 @@
 #include <iostream>
 #include "System.h"
 
-int main ( int, char*[])
+int main (int argc,char** argv)
 {
-	id::System* sys = new id::System();
+    (void) argc;
+    std::string path = argv[1];
+	id::System* sys = new id::System(path);
 	sys->init();
 	sys->drawAll();
    	delete sys;

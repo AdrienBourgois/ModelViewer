@@ -7,14 +7,14 @@
 
 namespace id 
 {
-	System::System()
+	System::System(std::string const& path)
 	{
 		this->dev = new Device(this->win);
 		this->win = new Window();
 		this->drv = new Driver(*this->win);
 		this->shader = new Shader();
 		this->drv->setShader(*this->shader);
-		this->mesh = new MeshObj("./assets/chara.obj", nullptr );
+		this->mesh = new MeshObj(path, nullptr);
 	}
 	System::~System()
 	{
