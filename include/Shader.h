@@ -1,35 +1,31 @@
-#ifndef __SHADER_INCLUDE__
-#define __SHADER_INCLUDE__
+#ifndef __SHADER_H_INCLUDED__
+#define __SHADER_H_INCLUDED__
 
-#include <fstream>
+#include <memory>
+#include <GL/glew.h>
 #include <iostream>
 #include <string>
-#include <GL/glew.h>
-#include <new>
 #include <SDL.h>
-#include <vector>
 
-namespace id 
-{
-    class Shader
-    {
-        public:
-            Shader(std::string const& name);
-            ~Shader();
-            void         initVertex(std::vector<GLfloat> shape);
-            GLuint       getPrgId() {return prg_id;}
-            GLint locate(const std::string& name);
-        private:
-            GLint vs_id;
-            GLint fs_id;
-            GLint prg_id;
+namespace id
+{	
+	class Shader
+	{
+	  public: 
+		Shader();
+		~Shader();
 
+		GLint getPrg()const {return this->prg_id;}
 
-            GLint loadShader(std::string const& name, GLint shader_type);
-            GLint loadProgram();
-            GLint makeAndUseProgram(std::string const& name);
-    };
-}//id
+		GLint loadShader(std::string const& name, GLint shader_type);
+		void loadProgram();
+		void load_model();
 
+	  private:
+		GLuint prg_id;
+        	GLint vs_id;
+	        GLint fs_id;
+	};
+}
 
 #endif

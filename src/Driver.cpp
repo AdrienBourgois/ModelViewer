@@ -1,64 +1,51 @@
-#include "Driver.h"
+#include <GL/glew.h>
+#include <SDL.h>
 #include <iostream>
+#include "Driver.h"
 
-#include "Device.h"
 namespace id
 {
-    Driver::Driver(SDL_Window * window)
-    {
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating contex...");
-        this->context = createContext(window);
-        this->shaders = std::map<std::string,Shader*>();
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"contxt created");
-    }
+	Driver::Driver(Window& window)
+	{
+		this->window = &window;
+	}
 
-    std::unique_ptr<Driver> Driver::create(Device & device)
-    {
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating Driver...");
-        Driver* drv = new (std::nothrow) Driver (device.getWindow()->getWindow());
-        SDL_assert(drv);
-        return std::unique_ptr<Driver>(drv);
-    }
+	Driver::~Driver()
+	{
+		SDL_GL_DeleteContext(this->glcontext);
+	}
 
-    Driver::~Driver()
-    {
-        SDL_GL_DeleteContext(getContext());
-    }
+	void Driver::setShader(Shader & shader)
+	{
+		this->shader = &shader;
+	}
+	void Driver::init_Glew()
+	{
+		this->glcontext = SDL_GL_CreateContext(this->window->getWindow());
+		glewExperimental = GL_TRUE;
+        	auto status = glewInit();
+	        SDL_assert(status == GLEW_OK);
+	}
+	void Driver::update()
+	{
+		this->world = maths::Matrix4x4::rotateY(this->angle);
+        	this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
+	        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
+        	this->angle += 1.f;
+	}
 
-    SDL_GLContext Driver::createContext(SDL_Window* window)
-    {
-        SDL_GLContext gl_context = SDL_GL_CreateContext(window);
-        SDL_assert(gl_context);
-        return gl_context;
-    }
+	void Driver::draw()
+	{
+		this->world_loc = glGetUniformLocation(this->shader->getPrg(), "world");
+	        this->view_loc = glGetUniformLocation(this->shader->getPrg(), "view");
+        	this->proj_loc = glGetUniformLocation(this->shader->getPrg(), "proj");
+	        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+        	glMatrixMode(GL_MODELVIEW);
 
-    void Driver::addShader(std::string const& name)
-    {
-        if(shaders.find(name)==shaders.end())
-        {
-            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"creating new shader");
-            shaders[name] = new Shader(name);
-        }
-        else
-            SDL_LogInfo(SDL_LOG_CATEGORY_ERROR,"Shader already created");
-    }
+	        glUniformMatrix4fv(this->world_loc, 1, GL_TRUE, this->world.val);
+        	glUniformMatrix4fv(this->view_loc, 1, GL_TRUE, this->view.val);
+	        glUniformMatrix4fv(this->proj_loc, 1, GL_TRUE, this->proj.val);
+        	glUseProgram(this->shader->getPrg());
+	}
 
-    void Driver::draw(Device & device)
-    {
-        glClear(GL_COLOR_BUFFER_BIT);
-        device.getScene()->drawAll();
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"drawAll done");
-        SDL_GL_SwapWindow(device.getWindow()->getWindow());
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION,"window swaped");
-    }
-
-    void Driver::setWorld(maths::Matrix4 const& world)
-    {
-        GLuint world_loc = getShader("simple")->locate("world");
-        glUniformMatrix4fv(world_loc,1,GL_TRUE, world.val);
-    }
-    void Driver::drawMesh(Mesh & mesh)
-    {
-        glDrawArrays(GL_TRIANGLES,0,mesh.getNbVertex());
-    }
 }

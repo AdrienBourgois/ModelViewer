@@ -22,10 +22,11 @@ namespace id{
             Material                 readMaterial();
             std::string              readName(std::string const& line);
             std::string              readValue(std::string const& line);
+            void                     writteMaterial(Material const& material);
         private:
             Parser_JSON()=default;
             ~Parser_JSON()=default;
-            std::ifstream stream;
+            std::fstream stream;
 
     };
 

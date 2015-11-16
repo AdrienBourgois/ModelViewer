@@ -1,10 +1,12 @@
 #include <iostream>
-#include "Device.h"
-#include "Parser_OBJ.h"
+#include "System.h"
 
 int main ( int, char*[])
 {
-    id::Device::create();
-
-    return EXIT_SUCCESS;
+	id::System* sys = new id::System();
+	sys->init();
+	sys->drawAll();
+   	delete sys;
+	
+	return EXIT_SUCCESS;
 }

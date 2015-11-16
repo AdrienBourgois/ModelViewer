@@ -1,14 +1,16 @@
 #include "Parser_JSON.h"
-
+#include <SDL.h>
+#include <map>
+#include <fstream>
 
 namespace id
 {
 
-    void Parser_JSON::openFile(std::string const% path)
+    void Parser_JSON::openFile(std::string const& path)
     {
         stream.open(path, std::fstream::in | std::fstream::binary | std::fstream::out);
 
-        if (!streaim.is_open())
+        if (!stream.is_open())
         {
             SDL_LogInfo(SDL_LOG_CATEGORY_ERROR, "Error when open file");
         }
@@ -19,26 +21,28 @@ namespace id
         stream.close();
     }
 
-    Material Parser_JSON:loadMaterial(std::string const& path)
+    Material Parser_JSON::loadMaterial(std::string const& path)
     {
-        Parser_JSON parser;
+        Parser_JSON* parser= new Parser_JSON();
         parser->openFile(path);
-        if(stream.is_open())
+        
+        if(parser->stream.is_open())
         {
             Material material = parser->readMaterial();
             parser->closeFile();
-        
+            delete parser; 
             return material;
         }
         delete parser;
-        return Material material();
+        Material material;
+        return material;
     }
 
     void Parser_JSON::saveMaterial(Material const& material)
     {
-        Parser_JSON parser;
-        parser->openFile(material->getName());
-        if(!stream.is_open())
+        Parser_JSON* parser = new Parser_JSON();
+        parser->openFile(material.getName());
+        if(!parser->stream.is_open())
             return;
         parser->writteMaterial(material);
         parser->closeFile();
@@ -57,12 +61,12 @@ namespace id
             if (stream.eof() || !stream.good())
                 break;
             current_line.erase(' ').erase('\t').erase('\n');
-            if ( (current_line[0] != "{") || current_line[0] != "}" )
+            if ( (current_line[0] != '{') || current_line[0] != '}' )
             {
                 data[this->readName(current_line)] = this->readValue(current_line);
             }
         }
-        Material material(std::stof(data[red]), std::stof(data[green]), std::stof(data[blue]), data[name]);
+        Material material(std::stof(data["red"]), std::stof(data["green"]), std::stof(data["blue"]), data["name"]);
         return material;
     }
 
@@ -86,9 +90,9 @@ namespace id
     {
         std::string value;
         unsigned int i = 0;
-        while (line[i] != ":")
+        while (line[i] != ':')
             ++i;
-        if(line[i] == "{")
+        if(line[i] == '{')
             return NULL;
         else
             ++i;
@@ -99,14 +103,14 @@ namespace id
         return value;
     }
 
-    void  Parser_JSON::saveMaterial(Material const& material)
+    void  Parser_JSON::writteMaterial(Material const& material)
     {
         this->stream << "{" << std::endl;
-        this->stream << "\t name:\"" << material->getName() <<"\"," << std::endl;
+        this->stream << "\t name:\"" << material.getName() <<"\"," << std::endl;
         this->stream << "color:{" << std::endl;
-        this->stream << "\t \t red:\"" << material->getRed() <<"\"," << std::endl;
-        this->stream << "\t \t green:\"" << material->getGreen() <<"\"," << std::endl;
-        this->stream << "\t \t blue:\"" << material->getBlue() <<"\"" << std::endl;
+        this->stream << "\t \t red:\"" << material.getRed() <<"\"," << std::endl;
+        this->stream << "\t \t green:\"" << material.getGreen() <<"\"," << std::endl;
+        this->stream << "\t \t blue:\"" << material.getBlue() <<"\"" << std::endl;
         this->stream << "\t}" <<std::endl;
         this->stream << "}"<<std::endl;
     }
