@@ -21,6 +21,6 @@ obj/System.o: src/System.cpp include/System.h include/Device.h \
  /usr/include/SDL2/SDL_messagebox.h /usr/include/SDL2/SDL_power.h \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
- include/MeshObj.h include/Vector.h include/Material.h include/Shader.h \
- include/Driver.h include/maths/tools.h include/SceneManager.h \
- include/Triforce.h include/maths/Matrix.h
+ include/MeshObj.h include/Vector.h include/Material.h include/Parseur.h \
+ include/Shader.h include/Driver.h include/maths/tools.h \
+ include/SceneManager.h include/Triforce.h include/maths/Matrix.h

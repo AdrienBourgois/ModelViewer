@@ -45,6 +45,7 @@ namespace id
 	        glUniformMatrix4fv(this->world_loc, 1, GL_TRUE, this->world.val);
         	glUniformMatrix4fv(this->view_loc, 1, GL_TRUE, this->view.val);
 	        glUniformMatrix4fv(this->proj_loc, 1, GL_TRUE, this->proj.val);
+
         	glUseProgram(this->shader->getPrg());
 	}
 

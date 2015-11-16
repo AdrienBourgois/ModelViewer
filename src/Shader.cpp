@@ -91,6 +91,5 @@ namespace id
 		this->vs_id = loadShader("simple", GL_VERTEX_SHADER);
         	this->fs_id = loadShader("simple", GL_FRAGMENT_SHADER);
 	        this->loadProgram();
-		std::cout<<prg_id<<std::endl;
 	}
 }

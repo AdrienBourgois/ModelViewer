@@ -13,6 +13,7 @@ SRC = main.cpp \
 	Triforce.cpp\
 	Shader.cpp\
 	Driver.cpp\
+	Parseur.cpp\
 
 LIBS = SDL2 SDL2_image GL GLEW GLU  
 

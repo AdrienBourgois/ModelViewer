@@ -14,8 +14,6 @@ namespace id
 		this->drv = new Driver(*this->win);
 		this->shader = new Shader();
 		this->drv->setShader(*this->shader);
-//		this->triforce = new Triforce(this->win);
-//		this->scenemgr = new SceneManager(this->dev, this->triforce);
 		this->mesh = new MeshObj("./assets/chara.obj", nullptr );
 	}
 	System::~System()
@@ -25,24 +23,18 @@ namespace id
 		delete this->win;
 		delete this->drv;
 		delete this->shader;
-//		delete this->scenemgr;
-//		delete this->triforce;
 		this->dev = nullptr;
 		this->win = nullptr;
 		this->drv = nullptr;
 		this->shader = nullptr;
-//		this->scenemgr = nullptr;
 		this->mesh = nullptr;
-//		this->triforce = nullptr;
 	}
 	void System::init()
 	{
 		this->dev->create();
-//		this->win->init();
 		this->drv->init_Glew();
 		this->shader->load_model();
 		this->mesh->initTexture();
-//		this->scenemgr->init();
 		this->mesh->create();
 	}
 	void System::drawAll()

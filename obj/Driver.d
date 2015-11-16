@@ -22,4 +22,4 @@ obj/Driver.o: src/Driver.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  include/Driver.h include/Device.h include/maths/Matrix.h \
  include/Window.h include/MeshObj.h include/Vector.h include/Material.h \
- include/Shader.h include/maths/tools.h
+ include/Parseur.h include/Shader.h include/maths/tools.h

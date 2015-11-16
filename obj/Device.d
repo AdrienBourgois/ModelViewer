@@ -22,6 +22,6 @@ obj/Device.o: src/Device.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  include/maths/Matrix.h include/maths/tools.h include/Device.h \
  include/maths/Matrix.h include/Window.h include/MeshObj.h \
- include/Vector.h include/Material.h include/Shader.h include/System.h \
- include/Device.h include/Driver.h include/maths/tools.h \
+ include/Vector.h include/Material.h include/Parseur.h include/Shader.h \
+ include/System.h include/Device.h include/Driver.h include/maths/tools.h \
  include/SceneManager.h include/Triforce.h
