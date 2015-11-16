@@ -64,10 +64,10 @@ namespace id
 		}
 		else if(ligne[0]=='f')
 		{
-    			ligne=doubleSlash(ligne);
-			ligne=remplacerSlash(ligne);
+    			ligne=this->parseur->doubleSlash(ligne);
+			ligne=this->parseur->remplacerSlash(ligne);
 
-    			std::vector<std::string> termes=splitSpace(ligne.substr(2));
+    			std::vector<std::string> termes=this->parseur->splitSpace(ligne.substr(2));
 
     			int ndonnees=(int)termes.size()/3;
     			for(int i = 0 ; i < (ndonnees == 3?3:4 ); i++)
@@ -87,7 +87,7 @@ namespace id
         	}
 
 		else if(ligne[0]=='m'&&first==NULL)
-		    charger_mtl(get_directory(name) + ligne.substr(7));
+		    charger_mtl(this->parseur->get_directory(name) + ligne.substr(7));
 
 		else if(ligne[0] == 'u')
 		    curname=ligne.substr(7);
@@ -112,92 +112,9 @@ namespace id
 				++(this->n_data);
 			}
 			
-		vertice=vector2float(tv);
-		textures=vector2float(tt);
+		vertice=this->parseur->vector2float(tv);
+		textures=this->parseur->vector2float(tt);
 	}
-	std::string MeshObj::doubleSlash(std::string s)
-	{
-		std::string s1 = "";	
-		for(unsigned int i = 0 ; i < s.size(); i++)
-    		{
-        		if(i < s.size()-1 && s[i] == '/' && s[i+1] == '/')
-        		{
-            			s1 += "/1/";
-            			i++;
-        		}
-        		else
-            		s1 += s[i];
-    		}
-    		return s1;
-	}
-
-	std::string MeshObj::remplacerSlash(std::string s)
-	{
-		std::string ret = "";
-    		for(unsigned int i = 0 ; i < s.size();i++)
-    		{	
-        		if(s[i] == '/')
-            			ret += ' ';
-        		else
-            			ret += s[i];
-    		}
-    		return ret;
-	}
-
-	std::string MeshObj::get_directory(std::string s)
-	{
-		std::string s1 = "", s2 = "";
-		for ( unsigned int i = 0; i < s.size() ; ++i)
-		{
-			if (s[i] == '/' || s[i] == '\\')
-			{
-				s1 += s2 + "/";
-				s2 = "";
-			}
-			else 
-				s2 += s[i];
-		}
-
-		return s1;
-	}
-
-	std::vector<std::string> MeshObj::splitSpace(std::string s)
-	{
-    		std::vector<std::string> ret;
-		std::string s1 = "";
-    		for(unsigned int i = 0; i < s.size(); i++)
-    		{	
-        		if(s[i] == ' ' || i == s.size()-1)
-        		{
-            			if(i == s.size()-1)
-                			s1 += s[i];
-
-            			ret.push_back(s1);
-            			s1 = "";
-		        }
-        		else
-           			s1 += s[i];
-     		}
-    		return ret;
-	}
-	float* MeshObj::vector2float(std::vector<float>& tableau)
-	{
-		float* t = NULL;
-		t = (float*)malloc(tableau.size()* sizeof(float));
-		if (t == NULL || tableau.empty())
-		{
-			float *t1 = (float*)malloc(sizeof(float)*3);
-			for(int i=0;i<3;i++)
-            			t1[i]=0.;
-        		return t1;
-    		}
-
-    		for(unsigned int i=0;i<tableau.size();i++)
-        		t[i]=tableau[i];
-
-    		return t;
-	}
-	
 	void MeshObj::charger_mtl(std::string name)
 	{
 		std::ifstream file(name.c_str(), std::ios::in);
@@ -208,12 +125,12 @@ namespace id
 
 		else if (ligne[0] == 'K' && ligne[1] == 'd')
 		{
-			std::vector<std::string> termes=splitSpace(ligne.substr(3));
+			std::vector<std::string> termes=this->parseur->splitSpace(ligne.substr(3));
 			materiaux.push_back(new Material((float)strtod(termes[0].c_str(),NULL),(float)strtod(termes[1].c_str(),NULL),(float)strtod(termes[2].c_str(),NULL),curname));
 		}
 		else if(ligne[0] == 'm' && ligne[5] == 'd')
 		{
-			std::string f = get_directory(name)+ligne.substr(7);
+			std::string f = this->parseur->get_directory(name)+ligne.substr(7);
 		}
 		else if(ligne[0] == 'd')
 		{	
@@ -225,7 +142,7 @@ namespace id
 	void MeshObj::draw_model()
 	{	
 		glBindTexture(GL_TEXTURE_2D,this->texture);
- 		glDrawArrays(GL_TRIANGLES, 0,this->n_data);	
+ 		glDrawArrays(GL_TRIANGLES, 0,this->n_data);
 	}
 	void MeshObj::create()
 	{
@@ -240,6 +157,10 @@ namespace id
 		glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
 		glClearColor(0.f,0.f,0.f,1.f);
+
+		std::cout << "Nombre de sommets: "<< this->n_data << std::endl;
+
+                std::cout << "Nombre de triangles: "<< this->n_data/3 << std::endl;
 	}
 	void MeshObj::initTexture()
 	{

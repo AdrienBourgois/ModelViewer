@@ -14,6 +14,7 @@ SRC = main.cpp \
 	Shader.cpp\
 	Driver.cpp\
 	Parser_JSON.cpp\
+	Parseur.cpp\
 
 LIBS = SDL2 SDL2_image GL GLEW GLU  
 

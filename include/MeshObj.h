@@ -8,6 +8,7 @@
 #include <GL/glew.h>
 #include "Vector.h"
 #include "Material.h"
+#include "Parseur.h"
 #include <fstream>
 
 namespace id
@@ -24,16 +25,12 @@ namespace id
 		void draw_model();
 		void create();
 		void initTexture();
-		std::string doubleSlash(std::string);
-		std::string remplacerSlash(std::string);
-		std::string get_directory(std::string);
-		std::vector<std::string> splitSpace(std::string);
-		float* vector2float(std::vector<float>& tableau);
-		
 
 	  private:
 		GLuint vbo;
                 GLuint vao;
+
+		Parseur* parseur;
 
 		GLuint texture = 0;
 		int n_data;
