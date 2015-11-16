@@ -1,30 +1,22 @@
-#ifndef _WINDOW_H
-#define _WINDOW_H
+#ifndef __WINDOW_H_INCLUDED__
+#define __WINDOW_H_INCLUDED__
 
-#include <new>
 #include <memory>
 #include <GL/glew.h>
 #include <SDL.h>
-#include <string>
-
-
 
 namespace id
 {
-    class Window
-    {
-        public: 
-            Window(Window const&)=delete;
-            Window(Window &&)=delete;
-            ~Window();
-
-            static std::unique_ptr<Window> create();
-                   SDL_Window*             getWindow() {return window;}
-
-        private:
-                   Window();
-                   SDL_Window* window;
-    };
-}//id
+	class Window 
+	{
+	  public:
+		Window();
+		~Window();
+		SDL_Window* getWindow() {return this->window;}
+		void init(); 
+	  private:
+		SDL_Window* window;
+	};
+}
 
 #endif

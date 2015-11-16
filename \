@@ -2,19 +2,17 @@ TARGET = out
 
 SRC = main.cpp \
 	System.cpp\
-	Device.cpp\
-	Window.cpp\
+
+#	Device.cpp\
 	SceneManager.cpp\
+
+	Window.cpp\
+
 	maths/Matrix.cpp\
 	maths/tools.cpp\
-	Vector.cpp\
-	Material.cpp\
-	MeshObj.cpp\
-	Triforce.cpp\
-	Shader.cpp\
-	Driver.cpp\
 
-LIBS = SDL2 SDL2_image GL GLEW GLU  
+
+LIBS = SDL2 GL GLEW
 
 BIN_DIR = bin/
 OBJ_DIR = obj/
@@ -26,19 +24,11 @@ DEPENDENCIES = $(OBJ:.o=.d)
 ARBO = $(sort $(dir $(DEPENDENCIES) $(OBJ_DIR)))
 INCLUDES = $(addprefix -I,$(INC_DIR))
 LIBRARIES = $(addprefix -l,$(LIBS))
-CXXFLAGS = -MMD -W -Wall -Werror -g3
-LDFLAGS = -W -Wall -Werror -g3
+CXXFLAGS = -MMD -W -Wall -Werror
+LDFLAGS = -W -Wall -Werror
 CXX = g++ -std=c++14
 
 .PHONY: all clean fclean re
-
-release: CXXFLAGS += -O3
-release: LDFLAGS += -O3
-release: all
-
-debug: CXXFLAGS += -O0 -g3
-debug: LDFLAGS += -O0 -g3
-debug: all
 
 all: $(TARGET)
 

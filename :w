@@ -6,7 +6,6 @@
 #include "maths/Matrix.h"
 #include "Window.h"
 #include "MeshObj.h"
-#include "Shader.h"
 
 namespace id
 {
@@ -17,19 +16,24 @@ namespace id
 	Device(Window*);
         ~Device();
 
+	GLint getView() {return this->view_loc;}
+	GLint getWorld() {return this->world_loc;}
+	GLint getProj() {return this->proj_loc;}	
+	GLint getVs() {return this->vs_id;}
+	GLint getFs() {return this->fs_id;}
+	GLint getPrg() {return this->prg_id;}
+
         void create();
 	void load_model();
 	void load();
 	void update();
 	void draw();
-	void init_Glew();
 
 	GLuint loadShader(std::string const& name, GLint shader_type);
 	GLuint loadProgram();
     private:
 	Window* win;
 	MeshObj* mesh;
-	Shader* shader;
 
 	maths::Matrix4 view;
 	maths::Matrix4 world;

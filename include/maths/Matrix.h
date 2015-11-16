@@ -1,10 +1,6 @@
 #ifndef __MATHS_MATRIX_INCLUDE__
 #define __MATHS_MATRIX_INCLUDE__
 
-#include <cmath>
-#include <algorithm>
-#include <iostream>
-
 namespace id {
 namespace maths {
 
@@ -17,7 +13,6 @@ struct Matrix4x4
     float val[16];
 
     static Matrix4x4 const identity;
-    static Matrix4x4 const voidMatrix;
 
     static Matrix4x4 perspective(float fovy, float aspect, float near, float far);
     static Matrix4x4 translate(float x, float y, float z);
@@ -26,18 +21,16 @@ struct Matrix4x4
     static Matrix4x4 rotateX(float angle);
     static Matrix4x4 rotateY(float angle);
     static Matrix4x4 rotateZ(float angle);
-    Matrix4x4 inverse();
 
-    Matrix4x4 operator* (Matrix4x4 const& mat);
+    auto inverse() -> Matrix4x4;
+
+    Matrix4x4 operator* (Matrix4x4 const& mat) const;
     Matrix4x4 operator*= (Matrix4x4 const& mat);
-
-    static float radianToDegrees(float radian)   {return radian * 180.f / M_PI;}
-    static float degreesToRadian(float degrees)  {return degrees * M_PI / 180.f;}
-
-    void showMatrix();
 
     //Vector3 getPosition() const;
 };
+
+float cotan ( float);
 
 typedef Matrix4x4 Matrix4;
 typedef Matrix3x3 Matrix3;
