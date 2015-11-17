@@ -32,7 +32,15 @@ namespace id
 	}
 	void Driver::update()
 	{
-		this->world = maths::Matrix4x4::rotateY(this->angle);
+		if ( x == false && y == false)
+			this->world = maths::Matrix4x4::identity;
+
+		if ( y == true && x == false)
+			this->world = maths::Matrix4x4::rotateY(this->angle)*maths::Matrix4x4::rotateX(this->angle2);
+
+		if ( x == true && y == false)
+			this->world = maths::Matrix4x4::rotateX(this->angle2)*maths::Matrix4x4::rotateY(this->angle);
+	
         	this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
 	        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
 	}
@@ -62,11 +70,27 @@ namespace id
 					switch (event.key.keysym.sym)
 					{
 						case SDLK_LEFT:
-							this->angle += 2.f;
+							this->angle -= 2.f;
+							y = true;
+							x = false;
 							return run;
 							break;
 						case SDLK_RIGHT:
-							this->angle -= 2.f;
+							this->angle += 2.f;
+							y = true;
+							x = false;
+							return run;
+							break;
+						case SDLK_UP:
+							this->angle2 += 2.f;
+							y = false;
+							x = true;
+							return run;
+							break;
+						case SDLK_DOWN:
+							this->angle2 -= 2.f;
+							y = false;
+							x = true;
 							return run;
 							break;
 					}

@@ -40,6 +40,9 @@ namespace id
 
 		float angle = 0.f;
 		float angle2 = 0.f;
+
+		bool x = false;
+		bool y = false;
 	};
 }
 

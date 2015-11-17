@@ -48,7 +48,7 @@ namespace id
 			if(ligne[1]==' ')
 			{
 				char x[255],y[255],z[255];
-        			sscanf(ligne.c_str(),"v %s %s %s",x,y,z);
+	       			sscanf(ligne.c_str(),"v %s %s %s",x,y,z);
         			ver.push_back(Vector(strtod(x,NULL),strtod(y,NULL),strtod(z,NULL)));
 			}
 			else if(ligne[1]=='t')
