@@ -19,6 +19,7 @@ SRC = main.cpp \
 	ImGuiImpl.cpp\
 	imgui.cpp\
 	imgui_draw.cpp\
+	GUIEnvironnement.cpp\
 
 LIBS = SDL2 SDL2_image GL GLEW GLU  
 
