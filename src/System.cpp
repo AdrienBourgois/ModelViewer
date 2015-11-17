@@ -11,11 +11,10 @@ namespace id
 {
 	System::System(std::string const& path)
 	{
-		
-        this->dev = new Device(this->win);
-        this->win = new Window();
-        this->dev->setWindow(*this->win);
-        this->gui = new GUIEnvironment();
+        	this->dev = new Device();
+	        this->win = new Window();
+        	this->dev->setWindow(*this->win);
+	        this->gui = new GUIEnvironment();
 		this->drv = new Driver(*this->win);
 		this->shader = new Shader();
 		this->drv->setShader(*this->shader);
@@ -23,21 +22,21 @@ namespace id
 	}
 	System::~System()
 	{
-        this->gui->ImGui_Shutdown();
+	        this->gui->ImGui_Shutdown();
 
 		delete this->mesh;
 		delete this->dev;
 		delete this->win;
 		delete this->drv;
 		delete this->shader;
-        //delete this->gui;
+        	delete this->gui;
 
 		this->dev = nullptr;
 		this->win = nullptr;
 		this->drv = nullptr;
 		this->shader = nullptr;
 		this->mesh = nullptr;
-        //this->gui = nullptr;
+        	this->gui = nullptr;
 	}
 	void System::init()
 	{

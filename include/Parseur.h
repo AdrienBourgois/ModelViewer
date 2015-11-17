@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include <string>
+#include <GL/glew.h>
 
 namespace id
 {
@@ -19,6 +21,7 @@ namespace id
                 std::vector<std::string> splitSpace(std::string);
 
 		float* vector2float(std::vector<float>& tableau);
+
 	};
 }
 

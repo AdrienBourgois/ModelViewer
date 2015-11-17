@@ -43,7 +43,10 @@ namespace id
 	    {
 		std::getline(file, ligne);	
 
-		if(ligne[0]=='v')
+		if (file.eof() || !file.good())
+	            break;
+	
+		else if(ligne[0]=='v')
 		{
 			if(ligne[1]==' ')
 			{
@@ -166,7 +169,7 @@ namespace id
 	}
 	void MeshObj::initTexture()
 	{
-		SDL_Surface* surf = IMG_Load("./media/texture_chara_UV2.png");
+		SDL_Surface* surf = IMG_Load("./media/YoungLink_grp.jpg");
 
 		glClearColor(.5,.5,.5,0);
 		glEnable(GL_DEPTH_TEST);
