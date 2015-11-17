@@ -19,6 +19,10 @@ namespace id
 		System(std::string const& path);
 		~System();
 
+        Window* getWindow() {return this->win;}
+        MeshObj* getMesh() {return this->mesh;}
+        Driver* getDriver() {return this->drv;}
+
 		void init();
 		void drawAll();
 	  private:

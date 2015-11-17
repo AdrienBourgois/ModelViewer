@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include "maths/Matrix.h"
 #include "GUIEnvironment.h"
+#include "imgui.h"
 
 namespace id 
 {
@@ -42,7 +43,7 @@ namespace id
 	{
 		this->dev->create();
 		this->drv->init_Glew();
-        this->gui->ImGui_Init(this->win->getWindow());
+        this->gui->ImGui_Init(*this);
 		this->shader->load_model();
 		this->mesh->initTexture();
 		this->mesh->create();
@@ -64,6 +65,10 @@ namespace id
             this->drv->update();
             this->drv->draw();
             this->mesh->draw_model();
+
+            this->gui->showGUI();
+            ImGui::Render();
+
             SDL_GL_SwapWindow(this->win->getWindow());
         }
 

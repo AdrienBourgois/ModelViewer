@@ -23,6 +23,8 @@ namespace id
 		void update();
 		void draw();
 
+        float* getAngle() {return &this->angle;}
+
 	  private:
 		Shader* shader;
 		Window* window;
@@ -30,12 +32,12 @@ namespace id
 		SDL_GLContext glcontext;
 
 		GLint world_loc;
-        	GLint view_loc;
-	        GLint proj_loc;
+        GLint view_loc;
+        GLint proj_loc;
 
 		maths::Matrix4 view;
-        	maths::Matrix4 world;
-	        maths::Matrix4 proj;
+        maths::Matrix4 world;
+        maths::Matrix4 proj;
 
 		float angle = 0.f;
 	};

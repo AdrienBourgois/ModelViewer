@@ -1,11 +1,11 @@
 #include "GUIEnvironment.h"
+#include "System.h"
 
-
-static int          g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;
-static int          g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;
-static int          g_AttribLocationPosition = 0, g_AttribLocationUV = 0, g_AttribLocationColor = 0;
-static unsigned int g_VboHandle = 0, g_VaoHandle = 0, g_ElementsHandle = 0;
-static GLuint       g_FontTexture = 0;
+int          g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;
+int          g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;
+int          g_AttribLocationPosition = 0, g_AttribLocationUV = 0, g_AttribLocationColor = 0;
+unsigned int g_VboHandle = 0, g_VaoHandle = 0, g_ElementsHandle = 0;
+GLuint       g_FontTexture = 0;
 
 void ImGui_ImplSdlGL3_CreateFontsTexture()
 {
@@ -235,9 +235,10 @@ static void ImGui_RenderDrawLists(ImDrawData* draw_data)
 namespace id
 {
 
-bool GUIEnvironment::ImGui_Init(SDL_Window *window)
+bool GUIEnvironment::ImGui_Init(System& system)
 {
-	g_Window = window;
+    this->system = &system;
+	g_Window = this->system->getWindow()->getWindow();
 	
 	ImGuiIO& io = ImGui::GetIO();
 	io.KeyMap[ImGuiKey_Tab] = SDLK_TAB;
@@ -343,6 +344,29 @@ void GUIEnvironment::ImGui_NewFrame()
 	SDL_ShowCursor(io.MouseDrawCursor ? 0 : 1);
 
 	ImGui::NewFrame();
+}
+
+void GUIEnvironment::showGUI()
+{
+    bool show_stats_window = true;
+    bool show_transformation_window = true;
+
+    if (show_stats_window)
+    {
+        ImGui::SetNextWindowSize(ImVec2(200,100), ImGuiSetCond_FirstUseEver);
+        ImGui::Begin("Informations", &show_stats_window);
+        ImGui::Text("Nombre de sommets : %i", system->getMesh()->getN_data());
+        ImGui::Text("Nombre de triangles : %i", system->getMesh()->getN_data()/3);
+        ImGui::End();
+    }
+
+    if (show_transformation_window)
+    {
+        ImGui::SetNextWindowSize(ImVec2(400,500), ImGuiSetCond_FirstUseEver);
+        ImGui::Begin("Transformation", &show_stats_window);
+        ImGui::SliderFloat("Angle :", this->system->getDriver()->getAngle(), 0.f, 360.f);
+        ImGui::End();
+    }
 }
 
 }
