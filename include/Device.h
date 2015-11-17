@@ -45,7 +45,6 @@ namespace id
 	GLint view_loc;
 	GLint proj_loc;
 
-	float angle = 0.f;
     };
 }
 

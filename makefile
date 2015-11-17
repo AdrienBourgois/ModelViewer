@@ -16,6 +16,7 @@ SRC = main.cpp \
 	Parser_JSON.cpp\
 	Parseur.cpp\
 	Log.cpp\
+	Files.cpp\
 
 LIBS = SDL2 SDL2_image GL GLEW GLU  
 

@@ -30,3 +30,599 @@ Mon Nov 16 16:46:05 2015
  Meshobj created
 Mon Nov 16 16:46:05 2015
  Shader loaded
+Mon Nov 16 16:50:32 2015
+ Creating device
+Mon Nov 16 16:50:32 2015
+ Device created
+Mon Nov 16 16:50:32 2015
+ Creating window
+Mon Nov 16 16:50:32 2015
+ Window created
+Mon Nov 16 16:50:32 2015
+ Creating driver
+Mon Nov 16 16:50:32 2015
+ Driver created
+Mon Nov 16 16:50:32 2015
+ Loading shader
+Mon Nov 16 16:50:32 2015
+ Creating meshobj
+Mon Nov 16 16:50:32 2015
+ Meshobj created
+Mon Nov 16 16:50:32 2015
+ Shader loaded
+Mon Nov 16 16:55:29 2015
+ Creating device
+Mon Nov 16 16:55:29 2015
+ Device created
+Mon Nov 16 16:55:29 2015
+ Creating window
+Mon Nov 16 16:55:29 2015
+ Window created
+Mon Nov 16 16:55:29 2015
+ Creating driver
+Mon Nov 16 16:55:29 2015
+ Driver created
+Mon Nov 16 16:55:29 2015
+ Loading shader
+Mon Nov 16 16:55:29 2015
+ Creating meshobj
+Mon Nov 16 16:55:29 2015
+ Meshobj created
+Mon Nov 16 16:55:29 2015
+ Shader loaded
+Mon Nov 16 16:55:46 2015
+ Creating device
+Mon Nov 16 16:55:46 2015
+ Device created
+Mon Nov 16 16:55:46 2015
+ Creating window
+Mon Nov 16 16:55:46 2015
+ Window created
+Mon Nov 16 16:55:46 2015
+ Creating driver
+Mon Nov 16 16:55:46 2015
+ Driver created
+Mon Nov 16 16:55:46 2015
+ Loading shader
+Mon Nov 16 16:55:46 2015
+ Creating meshobj
+Mon Nov 16 16:55:46 2015
+ Meshobj created
+Mon Nov 16 16:55:46 2015
+ Shader loaded
+Tue Nov 17 09:10:16 2015
+ Creating device
+Tue Nov 17 09:10:16 2015
+ Device created
+Tue Nov 17 09:10:16 2015
+ Creating window
+Tue Nov 17 09:10:16 2015
+ Window created
+Tue Nov 17 09:10:16 2015
+ Creating driver
+Tue Nov 17 09:10:16 2015
+ Driver created
+Tue Nov 17 09:10:16 2015
+ Loading shader
+Tue Nov 17 09:10:16 2015
+ Creating meshobj
+Tue Nov 17 09:10:16 2015
+ Meshobj created
+Tue Nov 17 09:10:17 2015
+ Shader loaded
+Tue Nov 17 09:12:52 2015
+ Creating device
+Tue Nov 17 09:12:52 2015
+ Device created
+Tue Nov 17 09:12:52 2015
+ Creating window
+Tue Nov 17 09:12:52 2015
+ Window created
+Tue Nov 17 09:12:52 2015
+ Creating driver
+Tue Nov 17 09:12:52 2015
+ Driver created
+Tue Nov 17 09:12:52 2015
+ Loading shader
+Tue Nov 17 09:12:52 2015
+ Creating meshobj
+Tue Nov 17 09:12:52 2015
+ Meshobj created
+Tue Nov 17 09:12:52 2015
+ Shader loaded
+Tue Nov 17 09:14:57 2015
+ Creating device
+Tue Nov 17 09:14:58 2015
+ Device created
+Tue Nov 17 09:14:58 2015
+ Creating window
+Tue Nov 17 09:14:58 2015
+ Window created
+Tue Nov 17 09:14:58 2015
+ Creating driver
+Tue Nov 17 09:14:58 2015
+ Driver created
+Tue Nov 17 09:14:58 2015
+ Loading shader
+Tue Nov 17 09:14:58 2015
+ Creating meshobj
+Tue Nov 17 09:14:58 2015
+ Meshobj created
+Tue Nov 17 09:14:58 2015
+ Shader loaded
+Tue Nov 17 09:27:25 2015
+ Creating device
+Tue Nov 17 09:27:25 2015
+ Device created
+Tue Nov 17 09:27:25 2015
+ Creating window
+Tue Nov 17 09:27:25 2015
+ Window created
+Tue Nov 17 09:27:25 2015
+ Creating driver
+Tue Nov 17 09:27:25 2015
+ Driver created
+Tue Nov 17 09:27:25 2015
+ Loading shader
+Tue Nov 17 09:27:25 2015
+ Creating meshobj
+Tue Nov 17 09:28:00 2015
+ Creating device
+Tue Nov 17 09:28:00 2015
+ Device created
+Tue Nov 17 09:28:00 2015
+ Creating window
+Tue Nov 17 09:28:00 2015
+ Window created
+Tue Nov 17 09:28:00 2015
+ Creating driver
+Tue Nov 17 09:28:00 2015
+ Driver created
+Tue Nov 17 09:28:00 2015
+ Loading shader
+Tue Nov 17 09:28:00 2015
+ Creating meshobj
+Tue Nov 17 09:28:00 2015
+ Meshobj created
+Tue Nov 17 09:28:00 2015
+ Shader loaded
+Tue Nov 17 09:28:40 2015
+ Creating device
+Tue Nov 17 09:28:41 2015
+ Device created
+Tue Nov 17 09:28:41 2015
+ Creating window
+Tue Nov 17 09:28:41 2015
+ Window created
+Tue Nov 17 09:28:41 2015
+ Creating driver
+Tue Nov 17 09:28:41 2015
+ Driver created
+Tue Nov 17 09:28:41 2015
+ Loading shader
+Tue Nov 17 09:28:41 2015
+ Creating meshobj
+Tue Nov 17 09:28:41 2015
+ Meshobj created
+Tue Nov 17 09:28:41 2015
+ Shader loaded
+Tue Nov 17 09:29:57 2015
+ Creating device
+Tue Nov 17 09:29:57 2015
+ Device created
+Tue Nov 17 09:29:57 2015
+ Creating window
+Tue Nov 17 09:29:57 2015
+ Window created
+Tue Nov 17 09:29:57 2015
+ Creating driver
+Tue Nov 17 09:29:57 2015
+ Driver created
+Tue Nov 17 09:29:57 2015
+ Loading shader
+Tue Nov 17 09:29:57 2015
+ Creating meshobj
+Tue Nov 17 09:29:57 2015
+ Meshobj created
+Tue Nov 17 09:29:57 2015
+ Shader loaded
+Tue Nov 17 09:30:52 2015
+ Creating device
+Tue Nov 17 09:30:53 2015
+ Device created
+Tue Nov 17 09:30:53 2015
+ Creating window
+Tue Nov 17 09:30:53 2015
+ Window created
+Tue Nov 17 09:30:53 2015
+ Creating driver
+Tue Nov 17 09:30:53 2015
+ Driver created
+Tue Nov 17 09:30:53 2015
+ Loading shader
+Tue Nov 17 09:30:53 2015
+ Creating meshobj
+Tue Nov 17 09:30:53 2015
+ Meshobj created
+Tue Nov 17 09:30:53 2015
+ Shader loaded
+Tue Nov 17 09:33:06 2015
+ Creating device
+Tue Nov 17 09:33:07 2015
+ Device created
+Tue Nov 17 09:33:07 2015
+ Creating window
+Tue Nov 17 09:33:07 2015
+ Window created
+Tue Nov 17 09:33:07 2015
+ Creating driver
+Tue Nov 17 09:33:07 2015
+ Driver created
+Tue Nov 17 09:33:07 2015
+ Loading shader
+Tue Nov 17 09:33:07 2015
+ Creating meshobj
+Tue Nov 17 09:33:07 2015
+ Meshobj created
+Tue Nov 17 09:33:07 2015
+ Shader loaded
+Tue Nov 17 09:49:02 2015
+ Creating device
+Tue Nov 17 09:49:02 2015
+ Device created
+Tue Nov 17 09:49:02 2015
+ Creating window
+Tue Nov 17 09:49:02 2015
+ Window created
+Tue Nov 17 09:49:02 2015
+ Creating driver
+Tue Nov 17 09:49:02 2015
+ Driver created
+Tue Nov 17 09:49:02 2015
+ Loading shader
+Tue Nov 17 09:49:02 2015
+ Creating meshobj
+Tue Nov 17 09:49:02 2015
+ Meshobj created
+Tue Nov 17 09:49:02 2015
+ Shader loaded
+Tue Nov 17 09:52:38 2015
+ Creating device
+Tue Nov 17 09:52:38 2015
+ Device created
+Tue Nov 17 09:52:38 2015
+ Creating window
+Tue Nov 17 09:52:38 2015
+ Window created
+Tue Nov 17 09:52:38 2015
+ Creating driver
+Tue Nov 17 09:52:38 2015
+ Driver created
+Tue Nov 17 09:52:38 2015
+ Loading shader
+Tue Nov 17 09:52:38 2015
+ Creating meshobj
+Tue Nov 17 09:52:38 2015
+ Meshobj created
+Tue Nov 17 09:52:38 2015
+ Shader loaded
+Tue Nov 17 09:55:55 2015
+ Creating device
+Tue Nov 17 09:55:55 2015
+ Device created
+Tue Nov 17 09:55:55 2015
+ Creating window
+Tue Nov 17 09:55:55 2015
+ Window created
+Tue Nov 17 09:55:55 2015
+ Creating driver
+Tue Nov 17 09:55:55 2015
+ Driver created
+Tue Nov 17 09:55:55 2015
+ Loading shader
+Tue Nov 17 09:55:55 2015
+ Creating meshobj
+Tue Nov 17 09:55:56 2015
+ Meshobj created
+Tue Nov 17 09:55:56 2015
+ Shader loaded
+Tue Nov 17 09:57:29 2015
+ Creating device
+Tue Nov 17 09:57:29 2015
+ Device created
+Tue Nov 17 09:57:29 2015
+ Creating window
+Tue Nov 17 09:57:29 2015
+ Window created
+Tue Nov 17 09:57:29 2015
+ Creating driver
+Tue Nov 17 09:57:29 2015
+ Driver created
+Tue Nov 17 09:57:29 2015
+ Loading shader
+Tue Nov 17 09:57:29 2015
+ Creating meshobj
+Tue Nov 17 09:57:29 2015
+ Meshobj created
+Tue Nov 17 09:57:29 2015
+ Shader loaded
+Tue Nov 17 09:58:12 2015
+ Creating device
+Tue Nov 17 09:58:12 2015
+ Device created
+Tue Nov 17 09:58:12 2015
+ Creating window
+Tue Nov 17 09:58:12 2015
+ Window created
+Tue Nov 17 09:58:12 2015
+ Creating driver
+Tue Nov 17 09:58:12 2015
+ Driver created
+Tue Nov 17 09:58:12 2015
+ Loading shader
+Tue Nov 17 09:58:12 2015
+ Creating meshobj
+Tue Nov 17 09:58:12 2015
+ Meshobj created
+Tue Nov 17 09:58:12 2015
+ Shader loaded
+Tue Nov 17 10:07:04 2015
+ Creating device
+Tue Nov 17 10:07:04 2015
+ Device created
+Tue Nov 17 10:07:04 2015
+ Creating window
+Tue Nov 17 10:07:04 2015
+ Window created
+Tue Nov 17 10:07:04 2015
+ Creating driver
+Tue Nov 17 10:07:04 2015
+ Driver created
+Tue Nov 17 10:07:04 2015
+ Loading shader
+Tue Nov 17 10:07:04 2015
+ Creating meshobj
+Tue Nov 17 10:07:04 2015
+ Meshobj created
+Tue Nov 17 10:07:04 2015
+ Shader loaded
+Tue Nov 17 10:07:55 2015
+ Creating device
+Tue Nov 17 10:07:55 2015
+ Device created
+Tue Nov 17 10:07:55 2015
+ Creating window
+Tue Nov 17 10:07:55 2015
+ Window created
+Tue Nov 17 10:07:55 2015
+ Creating driver
+Tue Nov 17 10:07:55 2015
+ Driver created
+Tue Nov 17 10:07:55 2015
+ Loading shader
+Tue Nov 17 10:07:55 2015
+ Creating meshobj
+Tue Nov 17 10:07:55 2015
+ Meshobj created
+Tue Nov 17 10:07:55 2015
+ Shader loaded
+Tue Nov 17 10:09:26 2015
+ Creating device
+Tue Nov 17 10:09:26 2015
+ Device created
+Tue Nov 17 10:09:26 2015
+ Creating window
+Tue Nov 17 10:09:26 2015
+ Window created
+Tue Nov 17 10:09:26 2015
+ Creating driver
+Tue Nov 17 10:09:26 2015
+ Driver created
+Tue Nov 17 10:09:26 2015
+ Loading shader
+Tue Nov 17 10:09:26 2015
+ Creating meshobj
+Tue Nov 17 10:09:26 2015
+ Meshobj created
+Tue Nov 17 10:09:26 2015
+ Shader loaded
+Tue Nov 17 10:13:35 2015
+ Creating device
+Tue Nov 17 10:13:35 2015
+ Device created
+Tue Nov 17 10:13:35 2015
+ Creating window
+Tue Nov 17 10:13:35 2015
+ Window created
+Tue Nov 17 10:13:35 2015
+ Creating driver
+Tue Nov 17 10:13:35 2015
+ Driver created
+Tue Nov 17 10:13:35 2015
+ Loading shader
+Tue Nov 17 10:13:35 2015
+ Creating meshobj
+Tue Nov 17 10:13:35 2015
+ Meshobj created
+Tue Nov 17 10:13:35 2015
+ Shader loaded
+Tue Nov 17 10:14:29 2015
+ Creating device
+Tue Nov 17 10:14:30 2015
+ Device created
+Tue Nov 17 10:14:30 2015
+ Creating window
+Tue Nov 17 10:14:30 2015
+ Window created
+Tue Nov 17 10:14:30 2015
+ Creating driver
+Tue Nov 17 10:14:30 2015
+ Driver created
+Tue Nov 17 10:14:30 2015
+ Loading shader
+Tue Nov 17 10:14:30 2015
+ Creating meshobj
+Tue Nov 17 10:14:30 2015
+ Meshobj created
+Tue Nov 17 10:14:30 2015
+ Shader loaded
+Tue Nov 17 10:14:57 2015
+ Creating device
+Tue Nov 17 10:14:57 2015
+ Device created
+Tue Nov 17 10:14:57 2015
+ Creating window
+Tue Nov 17 10:14:57 2015
+ Window created
+Tue Nov 17 10:14:57 2015
+ Creating driver
+Tue Nov 17 10:14:57 2015
+ Driver created
+Tue Nov 17 10:14:57 2015
+ Loading shader
+Tue Nov 17 10:14:57 2015
+ Creating meshobj
+Tue Nov 17 10:14:57 2015
+ Meshobj created
+Tue Nov 17 10:14:57 2015
+ Shader loaded
+Tue Nov 17 10:15:42 2015
+ Creating device
+Tue Nov 17 10:15:42 2015
+ Device created
+Tue Nov 17 10:15:42 2015
+ Creating window
+Tue Nov 17 10:15:42 2015
+ Window created
+Tue Nov 17 10:15:42 2015
+ Creating driver
+Tue Nov 17 10:15:42 2015
+ Driver created
+Tue Nov 17 10:15:42 2015
+ Loading shader
+Tue Nov 17 10:15:42 2015
+ Creating meshobj
+Tue Nov 17 10:15:42 2015
+ Meshobj created
+Tue Nov 17 10:15:42 2015
+ Shader loaded
+Tue Nov 17 10:16:13 2015
+ Creating device
+Tue Nov 17 10:16:13 2015
+ Device created
+Tue Nov 17 10:16:13 2015
+ Creating window
+Tue Nov 17 10:16:13 2015
+ Window created
+Tue Nov 17 10:16:13 2015
+ Creating driver
+Tue Nov 17 10:16:13 2015
+ Driver created
+Tue Nov 17 10:16:13 2015
+ Loading shader
+Tue Nov 17 10:16:13 2015
+ Creating meshobj
+Tue Nov 17 10:16:13 2015
+ Meshobj created
+Tue Nov 17 10:16:13 2015
+ Shader loaded
+Tue Nov 17 10:16:35 2015
+ Creating device
+Tue Nov 17 10:16:35 2015
+ Device created
+Tue Nov 17 10:16:35 2015
+ Creating window
+Tue Nov 17 10:16:35 2015
+ Window created
+Tue Nov 17 10:16:35 2015
+ Creating driver
+Tue Nov 17 10:16:35 2015
+ Driver created
+Tue Nov 17 10:16:35 2015
+ Loading shader
+Tue Nov 17 10:16:35 2015
+ Creating meshobj
+Tue Nov 17 10:16:35 2015
+ Meshobj created
+Tue Nov 17 10:16:35 2015
+ Shader loaded
+Tue Nov 17 10:17:27 2015
+ Creating device
+Tue Nov 17 10:17:27 2015
+ Device created
+Tue Nov 17 10:17:27 2015
+ Creating window
+Tue Nov 17 10:17:27 2015
+ Window created
+Tue Nov 17 10:17:27 2015
+ Creating driver
+Tue Nov 17 10:17:27 2015
+ Driver created
+Tue Nov 17 10:17:27 2015
+ Loading shader
+Tue Nov 17 10:17:27 2015
+ Creating meshobj
+Tue Nov 17 10:17:28 2015
+ Meshobj created
+Tue Nov 17 10:17:28 2015
+ Shader loaded
+Tue Nov 17 10:17:35 2015
+ Creating device
+Tue Nov 17 10:17:35 2015
+ Device created
+Tue Nov 17 10:17:35 2015
+ Creating window
+Tue Nov 17 10:17:35 2015
+ Window created
+Tue Nov 17 10:17:35 2015
+ Creating driver
+Tue Nov 17 10:17:35 2015
+ Driver created
+Tue Nov 17 10:17:35 2015
+ Loading shader
+Tue Nov 17 10:17:35 2015
+ Creating meshobj
+Tue Nov 17 10:17:35 2015
+ Meshobj created
+Tue Nov 17 10:17:35 2015
+ Shader loaded
+Tue Nov 17 10:19:03 2015
+ Creating device
+Tue Nov 17 10:19:03 2015
+ Device created
+Tue Nov 17 10:19:03 2015
+ Creating window
+Tue Nov 17 10:19:03 2015
+ Window created
+Tue Nov 17 10:19:03 2015
+ Creating driver
+Tue Nov 17 10:19:03 2015
+ Driver created
+Tue Nov 17 10:19:03 2015
+ Loading shader
+Tue Nov 17 10:19:03 2015
+ Creating meshobj
+Tue Nov 17 10:19:03 2015
+ Meshobj created
+Tue Nov 17 10:19:03 2015
+ Shader loaded
+Tue Nov 17 10:19:33 2015
+ Creating device
+Tue Nov 17 10:19:34 2015
+ Device created
+Tue Nov 17 10:19:34 2015
+ Creating window
+Tue Nov 17 10:19:34 2015
+ Window created
+Tue Nov 17 10:19:34 2015
+ Creating driver
+Tue Nov 17 10:19:34 2015
+ Driver created
+Tue Nov 17 10:19:34 2015
+ Loading shader
+Tue Nov 17 10:19:34 2015
+ Creating meshobj
+Tue Nov 17 10:19:34 2015
+ Meshobj created
+Tue Nov 17 10:19:34 2015
+ Shader loaded

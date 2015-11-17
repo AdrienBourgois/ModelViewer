@@ -22,6 +22,7 @@ namespace id
 		void init_Glew();
 		void update();
 		void draw();
+		bool keyEvent(bool);
 
 	  private:
 		Shader* shader;
@@ -38,6 +39,7 @@ namespace id
 	        maths::Matrix4 proj;
 
 		float angle = 0.f;
+		float angle2 = 0.f;
 	};
 }
 

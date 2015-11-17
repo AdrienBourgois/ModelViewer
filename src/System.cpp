@@ -41,12 +41,7 @@ namespace id
 	{
 		while (running)
        		{
-                	SDL_Event ev;
-	                while (SDL_PollEvent(&ev))
-        	        {
-                	        if (ev.type == SDL_QUIT)
-                        	        running = false;
-	                }
+			running = this->drv->keyEvent(running);
 			this->drv->update();
                         this->drv->draw();
                         this->mesh->draw_model();

@@ -1,5 +1,7 @@
 #include <GL/glew.h>
 #include <SDL.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 #include <iostream>
 #include "Driver.h"
 
@@ -33,7 +35,6 @@ namespace id
 		this->world = maths::Matrix4x4::rotateY(this->angle);
         	this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
 	        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
-        	this->angle += 1.f;
 	}
 
 	void Driver::draw()
@@ -50,5 +51,31 @@ namespace id
 
         	glUseProgram(this->shader->getPrg());
 	}
-
+	bool Driver::keyEvent(bool run)
+	{
+		SDL_Event event;
+		while ( SDL_PollEvent(&event))
+		{
+			switch (event.type)
+			{
+				case SDL_KEYDOWN:
+					switch (event.key.keysym.sym)
+					{
+						case SDLK_LEFT:
+							this->angle += 2.f;
+							return run;
+							break;
+						case SDLK_RIGHT:
+							this->angle -= 2.f;
+							return run;
+							break;
+					}
+				break;
+				case SDL_QUIT:
+					run =  false;
+					break;	
+			}
+		}
+		return run;
+	}	
 }
