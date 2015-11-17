@@ -26,12 +26,11 @@ namespace id
 	{
 		SDL_Quit();
 	}
-
-	Device::Device(Window* win)
+	Device::Device()
 	{
 		this->log->write_log("Creating device", "LOG.txt");
-		this->win = win;
 		SDL_Init(SDL_INIT_EVERYTHING);
+		this->win = nullptr;
 		this->log->write_log("Device created", "LOG.txt");
 	}
 

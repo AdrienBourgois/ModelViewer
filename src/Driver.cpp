@@ -36,8 +36,8 @@ namespace id
 
         this->world = maths::Matrix4x4::rotateY(this->angleY)*maths::Matrix4x4::rotateX(this->angleX)*maths::Matrix4x4::rotateZ(this->angleZ);
 
-        this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
-        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
+        this->view = maths::Matrix4::translate(0.f, 0.f, 200.f).inverse();
+        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 10000.f);
 	}
 
 	void Driver::draw()
