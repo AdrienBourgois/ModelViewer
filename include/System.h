@@ -9,6 +9,7 @@
 #include "Triforce.h"
 #include "Shader.h"
 #include "Driver.h"
+#include "GUIEnvironment.h"
 
 namespace id
 {
@@ -17,6 +18,10 @@ namespace id
 	  public:
 		System(std::string const& path);
 		~System();
+
+        Window* getWindow() {return this->win;}
+        MeshObj* getMesh() {return this->mesh;}
+        Driver* getDriver() {return this->drv;}
 
 		void init();
 		void drawAll();
@@ -28,6 +33,7 @@ namespace id
 		MeshObj* mesh;
 		Triforce* triforce;
 		Shader* shader;
+        GUIEnvironment* gui;
 		bool running = true;
 	};
 }

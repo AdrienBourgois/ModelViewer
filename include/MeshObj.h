@@ -27,6 +27,8 @@ namespace id
 		void create();
 		void initTexture();
 
+        int getN_data() {return this->n_data;}
+
 	  private:
 		Log* log;
 
