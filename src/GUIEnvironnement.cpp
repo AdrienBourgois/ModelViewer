@@ -350,6 +350,7 @@ void GUIEnvironment::showGUI()
 {
     bool show_stats_window = true;
     bool show_transformation_window = true;
+    bool show_open_window = true;
 
     if (show_stats_window)
     {
@@ -364,7 +365,26 @@ void GUIEnvironment::showGUI()
     {
         ImGui::SetNextWindowSize(ImVec2(400,500), ImGuiSetCond_FirstUseEver);
         ImGui::Begin("Transformation", &show_stats_window);
-        ImGui::SliderFloat("Angle :", this->system->getDriver()->getAngle(), 0.f, 360.f);
+        ImGui::SliderFloat("Angle X", this->system->getDriver()->getAngleX(), 0.f, 360.f);
+        ImGui::SliderFloat("Angle Y", this->system->getDriver()->getAngleY(), 0.f, 360.f);
+        ImGui::SliderFloat("Angle Z", this->system->getDriver()->getAngleZ(), 0.f, 360.f);
+        ImGui::End();
+    }
+
+    if (show_open_window)
+    {
+        ImGui::SetNextWindowSize(ImVec2(300,600), ImGuiSetCond_FirstUseEver);
+        ImGui::Begin("Open",&show_open_window);
+
+        if (open_window_update)
+        {
+            files.displayFolder();
+            open_window_update = false;
+        }
+
+        for (unsigned int i = 0; i < files.getListFolder().size(); ++i)
+            ImGui::Text("%*s%s", i*4, "", files.getListFolder(i).c_str());
+
         ImGui::End();
     }
 }

@@ -18,6 +18,6 @@ namespace id
 	}
 	void Window::init()
 	{
-		this->window = SDL_CreateWindow("OpenGL 4.2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1000, 1000, SDL_WINDOW_OPENGL);
+		this->window = SDL_CreateWindow("OpenGL 4.2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 700, 700, SDL_WINDOW_OPENGL);
 	}
 }

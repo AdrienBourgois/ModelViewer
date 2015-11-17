@@ -16,6 +16,9 @@ class FileManager
         ~FileManager() = default;
 
         std::string getPath();
+        std::vector<std::string> getListFolder() {return this->listFolder;}
+        std::string getListFolder(int n) {return this->listFolder[n];}
+
         void showFolder() {std::cout << "Actual path : " << getPath() << std::endl;}
         void setPath(std::string);
 

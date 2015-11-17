@@ -24,7 +24,9 @@ namespace id
 		void draw();
 		bool keyEvent(bool);
 
-        float* getAngle() {return &this->angle;}
+        float* getAngleX() {return &this->angleX;}
+        float* getAngleY() {return &this->angleY;}
+        float* getAngleZ() {return &this->angleZ;}
 
 	  private:
 		Shader* shader;
@@ -40,11 +42,9 @@ namespace id
         maths::Matrix4 world;
         maths::Matrix4 proj;
 
-		float angle = 0.f;
-		float angle2 = 0.f;
-
-		bool x = false;
-		bool y = false;
+		float angleX = 0.f;
+		float angleY = 0.f;
+        float angleZ = 0.f;
 	};
 }
 

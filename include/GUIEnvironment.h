@@ -6,6 +6,7 @@
 #include <SDL.h>
 #include <SDL_syswm.h>
 #include <GL/glew.h>
+#include "Files.h"
 
 namespace id
 {
@@ -29,6 +30,9 @@ namespace id
         SDL_Window*  g_Window = NULL;
         bool         g_MousePressed[3] = { false, false, false };
         float        g_MouseWheel = 0.0f;
+        FileManager  files;
+
+        bool open_window_update = true;
 	};
 }
 

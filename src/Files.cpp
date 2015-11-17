@@ -27,6 +27,7 @@ void FileManager::setPath(std::string path)
 {
     path = slashToSpace(path);
     this->listFolder = explodePath(path);
+    this->listFolder.erase(this->listFolder.begin());
 
     showFolder();
 }

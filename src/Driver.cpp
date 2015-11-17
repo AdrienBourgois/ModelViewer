@@ -32,17 +32,12 @@ namespace id
 	}
 	void Driver::update()
 	{
-		if ( x == false && y == false)
-			this->world = maths::Matrix4x4::identity;
+        this->world = maths::Matrix4x4::identity;
 
-		if ( y == true && x == false)
-			this->world = maths::Matrix4x4::rotateY(this->angle)*maths::Matrix4x4::rotateX(this->angle2);
+        this->world = maths::Matrix4x4::rotateY(this->angleY)*maths::Matrix4x4::rotateX(this->angleX)*maths::Matrix4x4::rotateZ(this->angleZ);
 
-		if ( x == true && y == false)
-			this->world = maths::Matrix4x4::rotateX(this->angle2)*maths::Matrix4x4::rotateY(this->angle);
-	
-        	this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
-	        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
+        this->view = maths::Matrix4::translate(0.f, 0.f, 100.f).inverse();
+        this->proj = maths::Matrix4::perspective(rad(90.f), 1.f, 0.1f, 1000.f);
 	}
 
 	void Driver::draw()
@@ -66,35 +61,6 @@ namespace id
 		{
 			switch (event.type)
 			{
-				case SDL_KEYDOWN:
-					switch (event.key.keysym.sym)
-					{
-						case SDLK_LEFT:
-							this->angle -= 2.f;
-							y = true;
-							x = false;
-							return run;
-							break;
-						case SDLK_RIGHT:
-							this->angle += 2.f;
-							y = true;
-							x = false;
-							return run;
-							break;
-						case SDLK_UP:
-							this->angle2 += 2.f;
-							y = false;
-							x = true;
-							return run;
-							break;
-						case SDLK_DOWN:
-							this->angle2 -= 2.f;
-							y = false;
-							x = true;
-							return run;
-							break;
-					}
-				break;
 				case SDL_QUIT:
 					run =  false;
 					break;	
