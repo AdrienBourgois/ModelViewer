@@ -12,8 +12,8 @@ namespace id
 	class GUIEnvironment
 	{
 	  public:
-		GUIEnvironment();
-		~GUIEnvironment();
+		GUIEnvironment() = default;
+		~GUIEnvironment() = default;
 
         IMGUI_API bool ImGui_Init(SDL_Window *window);
         IMGUI_API void ImGui_Shutdown();

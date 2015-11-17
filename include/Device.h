@@ -24,6 +24,7 @@ namespace id
 	void update();
 	void draw();
 	void init_Glew();
+    void setWindow(Window& window);
 
 	GLuint loadShader(std::string const& name, GLint shader_type);
 	GLuint loadProgram();

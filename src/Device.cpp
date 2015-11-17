@@ -34,4 +34,9 @@ namespace id
 		SDL_Init(SDL_INIT_EVERYTHING);
 		this->log->write_log("Device created", "LOG.txt");
 	}
+
+    void Device::setWindow(Window& window)
+    {
+        this->win = &window;
+    }
 }

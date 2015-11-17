@@ -9,6 +9,7 @@
 #include "Triforce.h"
 #include "Shader.h"
 #include "Driver.h"
+#include "GUIEnvironment.h"
 
 namespace id
 {
@@ -28,6 +29,7 @@ namespace id
 		MeshObj* mesh;
 		Triforce* triforce;
 		Shader* shader;
+        GUIEnvironment* gui;
 		bool running = true;
 	};
 }
