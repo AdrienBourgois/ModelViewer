@@ -1,5 +1,6 @@
 #include "GUIEnvironment.h"
 #include "System.h"
+#include "MeshObj.h"
 
 int          g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;
 int          g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;
@@ -373,17 +374,53 @@ void GUIEnvironment::showGUI()
 
     if (show_open_window)
     {
+        char type = 0;
+        int space = 0;
+
         ImGui::SetNextWindowSize(ImVec2(300,600), ImGuiSetCond_FirstUseEver);
         ImGui::Begin("Open",&show_open_window);
 
         if (open_window_update)
         {
-            files.displayFolder();
+            std::string path = this->files.getPath();
+            strcpy(this->pathStr, path.c_str());
+            this->list = this->files.getList();
             open_window_update = false;
         }
 
-        for (unsigned int i = 0; i < files.getListFolder().size(); ++i)
-            ImGui::Text("%*s%s", i*4, "", files.getListFolder(i).c_str());
+        for (unsigned int i = 1; i < files.getListFolder().size(); ++i)
+        {
+            space = i;
+            ImGui::TextColored(ImVec4(1.0f,1.0f,0.0f,1.0f), "%*s-> %s", space*4, "", files.getListFolder(i).c_str());
+        }
+
+        for(unsigned int i = 1; i < this->list.size(); ++i)
+        {
+            type = this->list[i]->d_type;
+            if (type == 4)
+                ImGui::TextColored(ImVec4(1.0f,0.0f,1.0f,1.0f), "%*s%s", space*4, "", this->list[i]->d_name);
+        }
+        for(unsigned int i = 0; i < this->list.size(); ++i)
+        {
+            type = this->list[i]->d_type;
+            if (type == 8)
+                ImGui::Text("%*s%s", space*4, "", this->list[i]->d_name);
+        }
+
+        ImGui::InputText("Path", pathStr, 100);
+        ImGui::SameLine();
+        if(ImGui::Button("Valid"))
+        {
+            this->files.setPath((std::string)pathStr);
+            open_window_update = true;
+        }
+
+        if(ImGui::Button("Open"))
+        {
+            delete this->system->getMesh();
+            MeshObj* mesh = new MeshObj((std::string)pathStr, nullptr);
+            this->system->setMesh(mesh);
+        }
 
         ImGui::End();
     }

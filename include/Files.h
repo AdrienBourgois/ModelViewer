@@ -18,6 +18,7 @@ class FileManager
         std::string getPath();
         std::vector<std::string> getListFolder() {return this->listFolder;}
         std::string getListFolder(int n) {return this->listFolder[n];}
+        std::vector<struct dirent*> getList();
 
         void showFolder() {std::cout << "Actual path : " << getPath() << std::endl;}
         void setPath(std::string);
@@ -30,6 +31,7 @@ class FileManager
 
     private:
         std::vector<std::string> listFolder;
+        std::vector<struct dirent*> list;
 };
 
 }// namespace id

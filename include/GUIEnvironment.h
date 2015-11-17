@@ -33,6 +33,9 @@ namespace id
         FileManager  files;
 
         bool open_window_update = true;
+
+        std::vector<struct dirent*> list;
+        char pathStr[1000];
 	};
 }
 

@@ -23,6 +23,8 @@ namespace id
         MeshObj* getMesh() {return this->mesh;}
         Driver* getDriver() {return this->drv;}
 
+        void setMesh(MeshObj* mesh) {this->mesh = mesh;}
+
 		void init();
 		void drawAll();
 	  private:

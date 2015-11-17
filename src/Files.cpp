@@ -27,9 +27,29 @@ void FileManager::setPath(std::string path)
 {
     path = slashToSpace(path);
     this->listFolder = explodePath(path);
-    this->listFolder.erase(this->listFolder.begin());
+    //this->listFolder.erase(this->listFolder.begin());
 
     showFolder();
+}
+
+std::vector<struct dirent*> FileManager::getList()
+{
+    this->list.clear();
+
+    struct dirent **namelist;
+    int count;
+
+    count = scandir(getPath().c_str(), &namelist, NULL, alphasort);
+    if (count < 0)
+    {
+        std::cout << "Can't open " << getPath() << " folder !" << std::endl;
+        perror("scandir");
+    }
+
+    for(int i = 0; i < count; ++i)
+        this->list.push_back(namelist[i]);
+
+    return this->list; 
 }
 
 void FileManager::displayFolder()
